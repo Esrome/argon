@@ -1,0 +1,10 @@
+Silicone - Material
+Monocrystalline Silicone - Refined Material
+	Crystalizer: Silicon | Quartz
+Crystalizer - Machine
+	Crafting: Iron Block | Iron Block | Iron Block | Crucible | Iron Ingot | Iron Block | Iron Block | Iron Block | Iron Block
+Solar Cell - Component
+	Crafting: Monocrystalline Silicone | Monocrystalline Silicone | Monocrystalline Silicone
+Crucible - Machine
+	Crafting: Terracotta | None | Terracotta | Terracotta | None | Terracotta | Terracotta | Terracotta | Terracotta
+Polyethylene Plastic - Refined Material
