@@ -1,0 +1,17 @@
+effect.mercury_burn=Mercury Burn
+potion.effect.mercury_burn=Vial of Mercury
+splash_potion.effect.mercury_burn=Splash Vial of Mercury
+lingering_potion.effect.mercury_burn=Lingering Vial of Mercury
+tipped_arrow.effect.mercury_burn=Mercury-Tipped Arrow
+
+death.attack.escm.mercury_burn=%1$s died of mercury poisoning.
+death.attack.escm.mercury_burn.player=%1$s was poisoned by %2$s with mercury.
+
+effect.radiation=Irradiated
+potion.effect.radiation=Vial of Radiation
+splash_potion.effect.radiation=Splash Vial of Radiation
+lingering_potion.effect.radiation=Lingering Vial of Radiation
+tipped_arrow.effect.radiation=Arrow of Radiation
+
+death.attack.escm.radiation=%1$s died of radiation poisoning.
+death.attack.escm.radiation.player=%1$s was irradiated by %2$s.

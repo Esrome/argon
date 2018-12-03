@@ -1,0 +1,33 @@
+1.12.2/run/
+1.12.2/.gradle/
+1.12.2/build/
+1.12.2/gradle-app.setting
+
+## Eclipse
+
+1.12.2/eclipse/
+*.pydevproject
+1.12.2/.project
+1.12.2/.metadata
+1.12.2/bin/
+1.12.2/tmp/
+*.tmp
+*.bak
+*.swp
+*~.nib
+1.12.2/local.properties
+1.12.2/.classpath
+1.12.2/.settings/
+1.12.2/.loadpath
+
+# External tool builders
+1.12.2/.externalToolBuilders/
+
+# Locally stored "Eclipse launch configurations"
+*.launch
+
+# CDT-specific
+1.12.2/.cproject
+
+# PDT-specific
+1.12.2/.buildpath
