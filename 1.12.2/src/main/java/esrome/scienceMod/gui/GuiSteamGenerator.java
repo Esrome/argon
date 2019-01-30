@@ -4,8 +4,10 @@ import esrome.scienceMod.blocks.containers.ContainerSteamGenerator;
 import esrome.scienceMod.tileentity.TileEntitySteamGenerator;
 import esrome.scienceMod.util.Reference;
 import net.minecraft.client.gui.inventory.GuiContainer;
+import net.minecraft.client.gui.inventory.GuiFurnace;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.inventory.ContainerFurnace;
 import net.minecraft.util.ResourceLocation;
 
 public class GuiSteamGenerator extends GuiContainer {
