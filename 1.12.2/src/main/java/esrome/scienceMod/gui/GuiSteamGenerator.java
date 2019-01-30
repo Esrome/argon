@@ -28,7 +28,7 @@ public class GuiSteamGenerator extends GuiContainer {
 		this.fontRenderer.drawString(tileName, (this.xSize / 2 - this.fontRenderer.getStringWidth(tileName) / 2 - 10) -5, 6, 4210752);
 		this.fontRenderer.drawString(this.player.getDisplayName().getUnformattedText(), 7, this.ySize - 96 + 2, 4210752);
 		this.fontRenderer.drawString(String.valueOf((this.tileentity.getEnergyStored())), 77, this.ySize- 96 + 2, 16768873);
-		this.fontRenderer.drawString(String.valueOf(this.tileentity.steam), 77, this.ySize- 96 - 8, 15198183);
+		this.fontRenderer.drawString(String.valueOf(this.tileentity.getField(2)), 77, this.ySize- 96 - 8, 15198183);
 	}
 	
 	@Override
@@ -72,7 +72,10 @@ public class GuiSteamGenerator extends GuiContainer {
 	{
 		int i = this.tileentity.cookTime;
 		if(i==25) {
-			return 25;
+			return pixels;
+		}
+		if(i==0) {
+			return 0;
 		}
 		return i != 0 ? i * pixels / 25 : 0;
 	}

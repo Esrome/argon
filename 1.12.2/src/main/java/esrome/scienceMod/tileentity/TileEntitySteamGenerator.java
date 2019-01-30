@@ -110,8 +110,8 @@ public class TileEntitySteamGenerator extends TileEntity implements ITickable{
 	}
 	
 	private boolean canActive(ItemStack stack) {
-		if(stack.getItem()==Items.WATER_BUCKET&&(handler.getStackInSlot(2).getItem()==Items.BUCKET || handler.getStackInSlot(2)==null)) return true;
-		if(stack.getItem()==Items.POTIONITEM&&(handler.getStackInSlot(2).getItem()==Items.GLASS_BOTTLE || handler.getStackInSlot(2)==null)) return true;
+		if(stack.getItem()==Items.WATER_BUCKET&&(handler.getStackInSlot(2).getItem()==Items.BUCKET || handler.getStackInSlot(2).isEmpty())) return true;
+		if(stack.getItem()==Items.POTIONITEM&&(handler.getStackInSlot(2).getItem()==Items.GLASS_BOTTLE || handler.getStackInSlot(2).isEmpty())) return true;
 		return false;
 	}
 	
@@ -138,7 +138,7 @@ public class TileEntitySteamGenerator extends TileEntity implements ITickable{
 	public NBTTagCompound writeToNBT(NBTTagCompound compound) {
 		super.writeToNBT(compound);
 		compound.setTag("Inventory", this.handler.serializeNBT());
-		compound.setInteger("CookTime", this.cookTime);
+		compound.setInteger("HeatTime", this.cookTime);
 		compound.setInteger("GuiEnergy", this.energy);
 		compound.setString("Name", getDisplayName().toString());
 		compound.setInteger("Steam", this.steam);
@@ -152,7 +152,7 @@ public class TileEntitySteamGenerator extends TileEntity implements ITickable{
 	public void readFromNBT(NBTTagCompound compound) {
 		super.readFromNBT(compound);
 		this.handler.deserializeNBT(compound.getCompoundTag("Inventory"));
-		this.cookTime = compound.getInteger("CookTime");
+		this.cookTime = compound.getInteger("HeatTime");
 		this.energy = compound.getInteger("GuiEnergy");
 		this.customName = compound.getString("Name");
 		this.steam = compound.getInteger("Steam");
@@ -182,6 +182,8 @@ public class TileEntitySteamGenerator extends TileEntity implements ITickable{
 			return this.cookTime;
 		case 2:
 			return this.steam;
+		case 3:
+			return this.fuelTime;
 		default:
 			return 0;
 		}
@@ -195,6 +197,8 @@ public class TileEntitySteamGenerator extends TileEntity implements ITickable{
 			this.cookTime = value;
 		case 2:
 			this.steam = value;
+		case 3:
+			this.fuelTime = value;
 		}
 	}
 	

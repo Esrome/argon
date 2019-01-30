@@ -14,7 +14,7 @@ import net.minecraftforge.items.SlotItemHandler;
 public class ContainerSteamGenerator extends Container {
 
 		private final TileEntitySteamGenerator tileentity;
-		private int energy, cookTime, steam;
+		private int energy, cookTime, steam, fuelTime;
 		
 		public ContainerSteamGenerator(InventoryPlayer player, TileEntitySteamGenerator tileentity) 
 		{
@@ -61,12 +61,14 @@ public class ContainerSteamGenerator extends Container {
 				IContainerListener listener = (IContainerListener)this.listeners.get(i);
 				if(this.energy != this.tileentity.getField(0)) listener.sendWindowProperty(this, 0, this.tileentity.getField(0));
 				if(this.cookTime != this.tileentity.getField(1)) listener.sendWindowProperty(this, 1, this.tileentity.getField(1));
-				if(this.steam != this.tileentity.getField(2)) listener.sendWindowProperty(this, 1, this.tileentity.getField(2));
+				if(this.steam != this.tileentity.getField(2)) listener.sendWindowProperty(this, 2, this.tileentity.getField(2));
+				if(this.fuelTime != this.tileentity.getField(3)) listener.sendWindowProperty(this, 3, this.tileentity.getField(3));
 			}
 			
 			this.energy = this.tileentity.getField(0);
 			this.cookTime = this.tileentity.getField(1);
 			this.steam = this.tileentity.getField(2);
+			this.steam = this.tileentity.getField(3);
 		}
 		
 		@Override
