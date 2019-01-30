@@ -1,0 +1,21 @@
+{
+	"credit": "By Esrome The Strange",
+	"textures": {
+		"5": "blocks/hardened_clay_stained_black"
+	},
+	"elements": [
+		{
+			"name": "wire",
+			"from": [15, 5, 5],
+			"to": [16, 11, 11],
+			"faces": {
+				"north": {"uv": [0, 0, 1, 6], "texture": "#5"},
+				"east": {"uv": [0, 0, 6, 6], "texture": "#5"},
+				"south": {"uv": [0, 0, 1, 6], "texture": "#5"},
+				"west": {"uv": [0, 0, 6, 6], "texture": "#5"},
+				"up": {"uv": [0, 0, 1, 6], "texture": "#5"},
+				"down": {"uv": [0, 0, 1, 6], "texture": "#5"}
+			}
+		}
+	]
+}

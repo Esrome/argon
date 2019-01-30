@@ -15,7 +15,6 @@ public class WorldEvents {
 		if(event.player.isPotionActive(ModPotions.MERCURY_BURN_EFFECT)) isActive = true;
 		
 		if(isActive) {
-			event.player.cameraPitch+=5;
 			event.player.attackEntityFrom(DamageSources.MERCURY_DAMAGE, 1 + event.player.getActivePotionEffect(ModPotions.MERCURY_BURN_EFFECT).getAmplifier());
 		}
 	}

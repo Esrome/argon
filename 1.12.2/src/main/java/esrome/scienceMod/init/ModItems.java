@@ -14,4 +14,9 @@ public class ModItems {
 	public static final Item URANIUM_INGOT = new ItemBase("uranium_ingot", ScienceMod.TAB);
 	public static final Item RADIUM_INGOT = new ItemBase("radium_ingot", ScienceMod.TAB);
 	
+	public static final Item COPPER_INGOT = new ItemBase("copper_ingot", ScienceMod.TAB);
+	public static final Item COPPER_NUGGET = new ItemBase("copper_nugget", ScienceMod.TAB);
+	public static final Item LEAD_INGOT = new ItemBase("lead_ingot", ScienceMod.TAB);
+	public static final Item LEAD_NUGGET = new ItemBase("lead_nugget", ScienceMod.TAB);
+	
 }

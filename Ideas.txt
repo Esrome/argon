@@ -7,4 +7,3 @@ Solar Cell - Component
 	Crafting: Monocrystalline Silicone | Monocrystalline Silicone | Monocrystalline Silicone
 Crucible - Machine
 	Crafting: Terracotta | None | Terracotta | Terracotta | None | Terracotta | Terracotta | Terracotta | Terracotta
-Polyethylene Plastic - Refined Material

@@ -10,4 +10,7 @@ public class Reference {
 	public static final String CLIENT_PROXY = "esrome.scienceMod.proxy.ClientProxy";
 	public static final String SERVER_PROXY = "esrome.scienceMod.proxy.ServerProxy";
 	
+	//gui ids
+	public static final int GUI_STEAM_GENERATOR = 1;
+	
 }

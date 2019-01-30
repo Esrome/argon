@@ -1,17 +1,32 @@
+container.steam_generator=Steam Generator
+
+item.radium_ingot.name=Radium Ingot
+item.uranium_ingot.name=Uranium Ingot
+item.copper_ingot.name=Copper Ingot
+item.copper_nugget.name=Copper Nugget
+item.lead_ingot.name=Lead Ingot
+item.lead_nugget.name=Lead Nugget
+
+tile.radium_ore.name=Radium Ore
+tile.radium_block.name=Radium Block
+tile.uranium_ore.name=Uranium Ore
+tile.uranium_block.name=Uranium Block
+tile.crucible.name=Crucible
+tile.copper_ore.name=Copper Ore
+tile.copper_block.name=Copper Block
+tile.lead_ore.name=Lead Ore
+tile.lead_block.name=Lead Block
+tile.steam_generator.name=Steam Generator
+
+fluid.mercury=Mercury
+fluid.hot_water=Hot Springs Water
+
+effect.radiation=Irradiated
 effect.mercury_burn=Mercury Burn
-potion.effect.mercury_burn=Vial of Mercury
-splash_potion.effect.mercury_burn=Splash Vial of Mercury
-lingering_potion.effect.mercury_burn=Lingering Vial of Mercury
-tipped_arrow.effect.mercury_burn=Mercury-Tipped Arrow
 
 death.attack.escm.mercury_burn=%1$s died of mercury poisoning.
 death.attack.escm.mercury_burn.player=%1$s was poisoned by %2$s with mercury.
-
-effect.radiation=Irradiated
-potion.effect.radiation=Vial of Radiation
-splash_potion.effect.radiation=Splash Vial of Radiation
-lingering_potion.effect.radiation=Lingering Vial of Radiation
-tipped_arrow.effect.radiation=Arrow of Radiation
-
 death.attack.escm.radiation=%1$s died of radiation poisoning.
-death.attack.escm.radiation.player=%1$s was irradiated by %2$s.
+death.attack.escm.radiation.player=%1$s was irradiated by %2$.
+
+itemGroup.escm=Esrome's Science Mod

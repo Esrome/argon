@@ -4,6 +4,7 @@ import esrome.scienceMod.proxy.ServerProxy;
 import esrome.scienceMod.util.Reference;
 import esrome.scienceMod.util.handlers.RegistryHandler;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.Mod.Instance;
@@ -22,6 +23,8 @@ public class ScienceMod {
 	
 	@SidedProxy(clientSide = Reference.CLIENT_PROXY, serverSide = Reference.SERVER_PROXY)
 	public static ServerProxy proxy;
+	
+	static { FluidRegistry.enableUniversalBucket(); }
 	
 	@EventHandler
 	public static void preInit(FMLPreInitializationEvent event) {

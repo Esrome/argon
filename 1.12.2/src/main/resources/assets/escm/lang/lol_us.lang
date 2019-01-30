@@ -1,17 +1,21 @@
-effect.mercury_burn=Ouch Metal Hurtz
-potion.effect.mercury_burn=Vile of Ouch Metal
-splash_potion.effect.mercury_burn=Sploosh Vile of Ouch Metal
-lingering_potion.effect.mercury_burn=Long Vile of Ouch Metal
-tipped_arrow.effect.mercury_burn=A Row of Ouch Metal
+container.steam_generator=Magic Trickury Masheen
+
+item.radium_ingot.name=Danger Mineruhl Ingoht
+item.uranium_ingot.name=Big Boom Ingoht
+
+tile.radium_ore.name=Rokz Wif Danger Mineruhl
+tile.radium_block.name=Danger Mineruhl Bluk
+tile.uranium_ore.name=Rokz Wif Big Boom
+tile.uranium_block.name=Big Boom Bluk
+tile.crucible.name=Crucibit
+
+fluid.mercury=Ouch Metul
+fluid.hot_water=Almohst Ouch Watur
+
+effect.radiation=Gren Stufed
+effect.mercury_burn=Ouch Metaled
 
 death.attack.escm.mercury_burn=%1$s died of ouch metal.
 death.attack.escm.mercury_burn.player=%1$s was ouch metaled by %2$s.
-
-effect.radiation=Gren Stuf
-potion.effect.radiation=Vile of Radz
-splash_potion.effect.radiation=Sploosh Vile of Radz
-lingering_potion.effect.radiation=Long Vile of Radz
-tipped_arrow.effect.radiation=A Row of Radz
-
 death.attack.escm.radiation=%1$s died of radz.
-death.attack.escm.radiation.player=%1$s was radded by %2$s.
+death.attack.escm.radiation.player=%1$s was radded by %2$.
