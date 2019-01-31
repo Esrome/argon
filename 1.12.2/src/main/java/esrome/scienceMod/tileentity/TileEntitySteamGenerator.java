@@ -47,6 +47,7 @@ public class TileEntitySteamGenerator extends TileEntity implements ITickable{
 	
 	@Override
 	public void update() {
+		System.out.println("TE cookTime: " + cookTime + ". energy: " + energy + ". steam: " + steam + ". delay: " + delay + ". fuelTime: " + fuelTime + ".");
 		if(delay>0) {
 			delay--;
 		}
@@ -91,9 +92,7 @@ public class TileEntitySteamGenerator extends TileEntity implements ITickable{
 					steam = maxSteam;
 				}
 			}
-		}else {
-			if(cookTime>0)cookTime--;
-		}
+		}else if(cookTime>0)cookTime--;
 	}
 	
 	private boolean isItemHot(ItemStack stack) {

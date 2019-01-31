@@ -23,6 +23,8 @@ public class GuiSteamGenerator extends GuiContainer {
 		this.tileentity = tileentity;
 	}
 	
+	
+	
 	@Override
 	protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY) 
 	{
@@ -36,6 +38,7 @@ public class GuiSteamGenerator extends GuiContainer {
 	@Override
 	protected void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY)
 	{
+		System.out.println("GUI cookTime: " + tileentity.cookTime + ". energy: " + tileentity.energy + ". steam: " + tileentity.steam + ". delay: " + tileentity.delay + ". fuelTime: " + tileentity.fuelTime + ".");
 		GlStateManager.color(1.0f, 1.0f, 1.0f, 1.0f);
 		this.mc.getTextureManager().bindTexture(TEXTURES);
 		this.drawTexturedModalRect(this.guiLeft, this.guiTop, 0, 0, this.xSize, this.ySize);
