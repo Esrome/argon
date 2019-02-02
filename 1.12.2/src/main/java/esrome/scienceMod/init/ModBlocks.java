@@ -6,8 +6,8 @@ import java.util.List;
 import esrome.scienceMod.ScienceMod;
 import esrome.scienceMod.blocks.BlockBase;
 import esrome.scienceMod.blocks.BlockFluid;
-import esrome.scienceMod.blocks.fluids.BlockMercury;
 import esrome.scienceMod.blocks.machines.BlockCrucible;
+import esrome.scienceMod.blocks.machines.BlockCrystalizer;
 import esrome.scienceMod.blocks.machines.BlockSteamGenerator;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
@@ -29,8 +29,12 @@ public class ModBlocks {
 	public static final Block LEAD_BLOCK = new BlockBase("lead_block", Material.IRON, 5.0F, 2, SoundType.METAL, ScienceMod.TAB);
 	
 	//Machines
+		//non-powered
 	public static final Block CRUCIBLE = new BlockCrucible("crucible", Material.ROCK, 3.0f, 0, SoundType.STONE, ScienceMod.TAB);
+		//generators
 	public static final Block STEAM_GENERATOR = new BlockSteamGenerator("steam_generator");
+		//powered
+	public static final Block CRYSTALIZER = new BlockCrystalizer("crystalizer");
 	
 	//Fluids
 	//public static final Block MERCURY_BLOCK = new BlockMercury("mercury", ModFluids.MERCURY, Material.WATER);

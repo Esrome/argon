@@ -1,7 +1,10 @@
 package esrome.scienceMod.util.handlers;
 
+import esrome.scienceMod.blocks.containers.ContainerCrystalizer;
 import esrome.scienceMod.blocks.containers.ContainerSteamGenerator;
+import esrome.scienceMod.gui.GuiCrystalizer;
 import esrome.scienceMod.gui.GuiSteamGenerator;
+import esrome.scienceMod.tileentity.TileEntityCrystalizer;
 import esrome.scienceMod.tileentity.TileEntitySteamGenerator;
 import esrome.scienceMod.util.Reference;
 import net.minecraft.entity.player.EntityPlayer;
@@ -14,12 +17,14 @@ public class GuiHandler implements IGuiHandler {
 	@Override
 	public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
 		if(ID == Reference.GUI_STEAM_GENERATOR) return new ContainerSteamGenerator(player.inventory, (TileEntitySteamGenerator)world.getTileEntity(new BlockPos(x,y,z)));
+		if(ID == Reference.GUI_CRYSTALIZER) return new ContainerCrystalizer(player.inventory, (TileEntityCrystalizer)world.getTileEntity(new BlockPos(x,y,z)));
 		return null;
 	}
 
 	@Override
 	public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
 		if(ID == Reference.GUI_STEAM_GENERATOR) return new GuiSteamGenerator(player.inventory, (TileEntitySteamGenerator)world.getTileEntity(new BlockPos(x,y,z)));
+		if(ID == Reference.GUI_CRYSTALIZER) return new GuiCrystalizer(player.inventory, (TileEntityCrystalizer)world.getTileEntity(new BlockPos(x,y,z)));
 		return null;
 	}
 

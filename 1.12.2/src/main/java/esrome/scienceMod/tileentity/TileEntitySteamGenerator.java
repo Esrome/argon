@@ -28,8 +28,8 @@ public class TileEntitySteamGenerator extends TileEntity implements ITickable{
 	public int maxEnergy = storage.getMaxEnergyStored();
 	public int steam = 0;
 	public int maxSteam = 1000;
-	public int delay = 0;
 	public int fuelTime = 0;
+	public int maxFuelTime=0;
 	
 	@Override
 	public <T> T getCapability(Capability<T> capability, EnumFacing facing) {
@@ -47,21 +47,17 @@ public class TileEntitySteamGenerator extends TileEntity implements ITickable{
 	
 	@Override
 	public void update() {
-		System.out.println("TE cookTime: " + cookTime + ". energy: " + energy + ". steam: " + steam + ". delay: " + delay + ". fuelTime: " + fuelTime + ".");
-		if(delay>0) {
-			delay--;
-		}
 		if(fuelTime>0) {
 			fuelTime--;
 		}
-		if(steam>=50&&energy<storage.getMaxEnergyStored()&& delay == 0) {
-			steam-=50;
-			energy+=20;
-			delay = 25;
+		if(steam>=10&&energy<storage.getMaxEnergyStored()) {
+			steam-=10;
+			energy+=1;
 			if(energy>storage.getMaxEnergyStored())energy=storage.getMaxEnergyStored();
 		}
 		if(isItemHot(handler.getStackInSlot(1))&&fuelTime==0&&isItemFuel(handler.getStackInSlot(0))&&canActive(handler.getStackInSlot(0))){
 			fuelTime+=getHeatValue(handler.getStackInSlot(1));
+			maxFuelTime=getHeatValue(handler.getStackInSlot(1));
 			if(handler.getStackInSlot(1).getItem()==Items.LAVA_BUCKET) {
 				handler.setStackInSlot(1, new ItemStack(Items.BUCKET));
 			}else {
@@ -95,11 +91,11 @@ public class TileEntitySteamGenerator extends TileEntity implements ITickable{
 		}else if(cookTime>0)cookTime--;
 	}
 	
-	private boolean isItemHot(ItemStack stack) {
+	public static boolean isItemHot(ItemStack stack) {
 		return getHeatValue(stack)>0;
 	}
 	
-	private int getHeatValue(ItemStack stack) {
+	private static int getHeatValue(ItemStack stack) {
 		if(stack.getItem()==Items.LAVA_BUCKET) return 500;
 		if(stack.getItem()==Items.COAL) return 65;
 		if(stack.getItem()==Items.BLAZE_POWDER) return 100;
@@ -140,8 +136,8 @@ public class TileEntitySteamGenerator extends TileEntity implements ITickable{
 		compound.setInteger("GuiEnergy", this.energy);
 		compound.setString("Name", getDisplayName().toString());
 		compound.setInteger("Steam", this.steam);
-		compound.setInteger("Delay", this.delay);
 		compound.setInteger("FuelTime", this.fuelTime);
+		compound.setInteger("MaxFuelTime", this.maxFuelTime);
 		this.storage.writeToNBT(compound);
 		return compound;
 	}
@@ -169,9 +165,11 @@ public class TileEntitySteamGenerator extends TileEntity implements ITickable{
 		this.energy = compound.getInteger("GuiEnergy");
 		this.customName = compound.getString("Name");
 		this.steam = compound.getInteger("Steam");
-		this.delay = compound.getInteger("Delay");
 		this.fuelTime = compound.getInteger("FuelTime");
+		this.maxFuelTime = compound.getInteger("MaxFuelTime");
 		this.storage.readFromNBT(compound);
+		this.updateContainingBlockInfo();
+		
 	}
 	
 	@Override
@@ -185,34 +183,6 @@ public class TileEntitySteamGenerator extends TileEntity implements ITickable{
 	
 	public int getMaxEnergyStored() {
 		return this.maxEnergy;
-	}
-	
-	public int getField(int id) {
-		switch(id) {
-		case 0:
-			return this.energy;
-		case 1:
-			return this.cookTime;
-		case 2:
-			return this.steam;
-		case 3:
-			return this.fuelTime;
-		default:
-			return 0;
-		}
-	}
-	
-	public void setField(int id, int value) {
-		switch(id) {
-		case 0:
-			this.energy = value;
-		case 1:
-			this.cookTime = value;
-		case 2:
-			this.steam = value;
-		case 3:
-			this.fuelTime = value;
-		}
 	}
 	
 	public boolean isUsableByPlayer(EntityPlayer player) 

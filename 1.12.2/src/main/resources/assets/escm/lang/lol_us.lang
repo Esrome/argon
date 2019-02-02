@@ -1,13 +1,23 @@
 container.steam_generator=Magic Trickury Masheen
+container.crystalizer=Fanceh Makur
 
 item.radium_ingot.name=Danger Mineruhl Ingoht
 item.uranium_ingot.name=Big Boom Ingoht
+item.lead_ingot.name=Led Ingut
+item.lead_nugget.name=Led Bit
+item.copper_ingot.name=Zappy Ingut
+item.copper_nugget.name=Zappy Bit
 
 tile.radium_ore.name=Rokz Wif Danger Mineruhl
 tile.radium_block.name=Danger Mineruhl Bluk
 tile.uranium_ore.name=Rokz Wif Big Boom
 tile.uranium_block.name=Big Boom Bluk
 tile.crucible.name=Crucibit
+tile.lead_ore.name=Rockz Wif Led
+tile.lead_block.name=Led Bluk
+tile.copper_ore.name=Rockz Wif Zappy Metal
+tile.copper_block.name=Zappy Bluk
+tile.steam_generator.name=Maek Watur Gone
 
 fluid.mercury=Ouch Metul
 fluid.hot_water=Almohst Ouch Watur

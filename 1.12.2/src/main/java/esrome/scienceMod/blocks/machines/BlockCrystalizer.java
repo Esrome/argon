@@ -6,7 +6,7 @@ import java.util.Random;
 import esrome.scienceMod.ScienceMod;
 import esrome.scienceMod.blocks.BlockBase;
 import esrome.scienceMod.init.ModBlocks;
-import esrome.scienceMod.tileentity.TileEntitySteamGenerator;
+import esrome.scienceMod.tileentity.TileEntityCrystalizer;
 import esrome.scienceMod.util.IHasModel;
 import esrome.scienceMod.util.Reference;
 import net.minecraft.block.BlockHorizontal;
@@ -26,33 +26,37 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
 
-public class BlockSteamGenerator extends BlockBase implements IHasModel {
+public class BlockCrystalizer extends BlockBase implements IHasModel {
 
-    public static final PropertyDirection FACING = BlockHorizontal.FACING;
+	public static final PropertyDirection FACING = BlockHorizontal.FACING;
     
-	public BlockSteamGenerator(String name) {
+	public BlockCrystalizer(String name) {
 		super(name, Material.IRON, 3.0f, 0, SoundType.METAL, ScienceMod.TAB);
 	}
 	
 	@Override
 	public Item getItemDropped(IBlockState state, Random rand, int fortune) {
-		return Item.getItemFromBlock(ModBlocks.STEAM_GENERATOR);
+		return Item.getItemFromBlock(ModBlocks.CRYSTALIZER);
 	}
 	
 	@Override
 	public ItemStack getItem(World worldIn, BlockPos pos, IBlockState state) {
-		return new ItemStack(Item.getItemFromBlock(ModBlocks.STEAM_GENERATOR));
+		return new ItemStack(Item.getItemFromBlock(ModBlocks.CRYSTALIZER));
 	}
 	
 	@Override
 	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn,EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
 		if(!worldIn.isRemote) {
-			playerIn.openGui(ScienceMod.instance, Reference.GUI_STEAM_GENERATOR, worldIn, pos.getX(), pos.getY(), pos.getZ());
+			playerIn.openGui(ScienceMod.instance, Reference.GUI_CRYSTALIZER, worldIn, pos.getX(), pos.getY(), pos.getZ());
 		}
 		return true;
+	}
+	
+	@Override
+	public boolean isOpaqueCube(IBlockState state) {
+		return false;
 	}
 	
     public IBlockState getStateForPlacement(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer){
@@ -67,12 +71,12 @@ public class BlockSteamGenerator extends BlockBase implements IHasModel {
 	
 	@Override
 	public TileEntity createTileEntity(World world, IBlockState state) {
-		return new TileEntitySteamGenerator();
+		return new TileEntityCrystalizer();
 	}
 	
 	@Override
 	public void breakBlock(World worldIn, BlockPos pos, IBlockState state) {
-		TileEntitySteamGenerator tileentity = (TileEntitySteamGenerator)worldIn.getTileEntity(pos);
+		TileEntityCrystalizer tileentity = (TileEntityCrystalizer)worldIn.getTileEntity(pos);
 		worldIn.spawnEntity(new EntityItem(worldIn, pos.getX(), pos.getY(), pos.getZ(), tileentity.handler.getStackInSlot(0)));
 		worldIn.spawnEntity(new EntityItem(worldIn, pos.getX(), pos.getY(), pos.getZ(), tileentity.handler.getStackInSlot(1)));
 		worldIn.spawnEntity(new EntityItem(worldIn, pos.getX(), pos.getY(), pos.getZ(), tileentity.handler.getStackInSlot(2)));
@@ -93,8 +97,7 @@ public class BlockSteamGenerator extends BlockBase implements IHasModel {
     
 	@Override
 	public void addInformation(ItemStack stack, World player, List<String> tooltip, ITooltipFlag advanced) {
-		tooltip.add("An inefficient generator that uses water as fuel.");
+		tooltip.add("A machine used to crystallize minerals.");
 	}
 	
 }
-

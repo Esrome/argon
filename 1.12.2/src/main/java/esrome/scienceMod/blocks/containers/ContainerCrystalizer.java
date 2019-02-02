@@ -1,32 +1,28 @@
 package esrome.scienceMod.blocks.containers;
 
 import esrome.scienceMod.blocks.containers.slots.SlotOutput;
-import esrome.scienceMod.blocks.containers.slots.SlotSteamFuel;
-import esrome.scienceMod.tileentity.TileEntitySteamGenerator;
+import esrome.scienceMod.tileentity.TileEntityCrystalizer;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
-import net.minecraft.inventory.IContainerListener;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.SlotItemHandler;
 
-public class ContainerSteamGenerator extends Container {
+public class ContainerCrystalizer extends Container {
 
-		private final TileEntitySteamGenerator tileentity;
+		private final TileEntityCrystalizer tileentity;
 		
-		public ContainerSteamGenerator(InventoryPlayer player, TileEntitySteamGenerator tileentity) 
+		public ContainerCrystalizer(InventoryPlayer player, TileEntityCrystalizer tileentity) 
 		{
 			this.tileentity = tileentity;
 			IItemHandler handler = tileentity.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null);
 			
-			this.addSlotToContainer(new SlotItemHandler(handler, 0, 18, 17));
-			this.addSlotToContainer(new SlotSteamFuel(handler, 1, 45, 53));
-			this.addSlotToContainer(new SlotOutput(handler, 2, 72, 17));
+			this.addSlotToContainer(new SlotItemHandler(handler, 0, 43, 21));
+			this.addSlotToContainer(new SlotItemHandler(handler, 1, 87, 21));
+			this.addSlotToContainer(new SlotOutput(handler, 2, 65, 56));
 			
 			for(int y = 0; y < 3; y++)
 			{
