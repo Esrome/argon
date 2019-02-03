@@ -1,5 +1,6 @@
 container.steam_generator=Steam Generator
 container.crystalizer=Crystalizer
+container.transmitter_tower=Transmitter Tower
 
 item.radium_ingot.name=Radium Ingot
 item.uranium_ingot.name=Uranium Ingot
@@ -19,6 +20,8 @@ tile.lead_ore.name=Lead Ore
 tile.lead_block.name=Lead Block
 tile.steam_generator.name=Steam Generator
 tile.crystalizer.name=Crystalizer
+tile.transmitter_tower_base.name=Transmitter Tower Base
+tile.transmitter_tower_support.name=Transmitter Tower Support
 
 fluid.mercury=Mercury
 fluid.hot_water=Hot Springs Water

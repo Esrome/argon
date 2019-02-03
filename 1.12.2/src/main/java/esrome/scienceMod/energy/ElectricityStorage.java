@@ -64,5 +64,9 @@ public class ElectricityStorage extends EnergyStorage {
     	compound.setInteger("maxExtract", this.maxExtract);
     	compound.setInteger("maxReceive", this.maxReceive);
     }
+
+	public int getMaxExtract() {
+		return this.maxExtract;
+	}
 	
 }

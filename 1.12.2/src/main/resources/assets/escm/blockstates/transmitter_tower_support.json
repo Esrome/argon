@@ -1,0 +1,13 @@
+{
+    "variants": 
+    {
+        "facing=north,straight=false": { "model": "escm:transmitter_tower_support"},
+        "facing=east,straight=false": { "model": "escm:transmitter_tower_support", "y": 90},
+        "facing=south,straight=false": { "model": "escm:transmitter_tower_support", "y": 180},
+        "facing=west,straight=false": { "model": "escm:transmitter_tower_support", "y": 270},
+        "facing=north,straight=true": { "model": "escm:transmitter_tower_support_straight"},
+        "facing=east,straight=true": { "model": "escm:transmitter_tower_support_straight", "y": 90},
+        "facing=south,straight=true": { "model": "escm:transmitter_tower_support_straight"},
+        "facing=west,straight=true": { "model": "escm:transmitter_tower_support_straight", "y": 90}
+    }
+}

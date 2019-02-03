@@ -13,5 +13,6 @@ public class Reference {
 	//gui ids
 	public static final int GUI_STEAM_GENERATOR = 1;
 	public static final int GUI_CRYSTALIZER = 2;
+	public static final int GUI_TRANSMITTER_TOWER = 3;
 	
 }

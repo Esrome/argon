@@ -6,6 +6,8 @@ import java.util.List;
 import esrome.scienceMod.ScienceMod;
 import esrome.scienceMod.blocks.BlockBase;
 import esrome.scienceMod.blocks.BlockFluid;
+import esrome.scienceMod.blocks.energy.BlockTransmitterTowerBase;
+import esrome.scienceMod.blocks.energy.BlockTransmitterTowerSupport;
 import esrome.scienceMod.blocks.machines.BlockCrucible;
 import esrome.scienceMod.blocks.machines.BlockCrystalizer;
 import esrome.scienceMod.blocks.machines.BlockSteamGenerator;
@@ -35,6 +37,9 @@ public class ModBlocks {
 	public static final Block STEAM_GENERATOR = new BlockSteamGenerator("steam_generator");
 		//powered
 	public static final Block CRYSTALIZER = new BlockCrystalizer("crystalizer");
+		//storage
+	public static final Block TRANSMITTER_TOWER_BASE = new BlockTransmitterTowerBase("transmitter_tower_base");
+	public static final Block TRANSMITTER_TOWER_SUPPORT = new BlockTransmitterTowerSupport("transmitter_tower_support");
 	
 	//Fluids
 	//public static final Block MERCURY_BLOCK = new BlockMercury("mercury", ModFluids.MERCURY, Material.WATER);

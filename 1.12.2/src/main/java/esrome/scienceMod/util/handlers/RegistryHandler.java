@@ -58,6 +58,7 @@ public class RegistryHandler {
 		GameRegistry.registerWorldGenerator(new WorldGenMetalOres(), 0);
 		
 		RenderHandler.registerCustomMeshesAndStates();
+		ScienceMod.proxy.registerRenderers();
 	}
 	
 	public static void init() {
