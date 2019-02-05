@@ -38,6 +38,11 @@ public class BlockSteamGenerator extends BlockBase implements IHasModel {
 	}
 	
 	@Override
+	public boolean isOpaqueCube(IBlockState state) {
+		return false;
+	}
+	
+	@Override
 	public Item getItemDropped(IBlockState state, Random rand, int fortune) {
 		return Item.getItemFromBlock(ModBlocks.STEAM_GENERATOR);
 	}

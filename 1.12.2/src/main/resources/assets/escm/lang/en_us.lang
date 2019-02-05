@@ -1,6 +1,10 @@
 container.steam_generator=Steam Generator
 container.crystalizer=Crystalizer
 container.transmitter_tower=Transmitter Tower
+container.belt_grinder=Belt Grinder
+
+translation.energy=Energy
+translation.energy_reader_fail=Object has no energy.
 
 item.radium_ingot.name=Radium Ingot
 item.uranium_ingot.name=Uranium Ingot
@@ -8,6 +12,7 @@ item.copper_ingot.name=Copper Ingot
 item.copper_nugget.name=Copper Nugget
 item.lead_ingot.name=Lead Ingot
 item.lead_nugget.name=Lead Nugget
+item.lead_dust.name=Lead Dust
 
 tile.radium_ore.name=Radium Ore
 tile.radium_block.name=Radium Block
@@ -22,6 +27,8 @@ tile.steam_generator.name=Steam Generator
 tile.crystalizer.name=Crystalizer
 tile.transmitter_tower_base.name=Transmitter Tower Base
 tile.transmitter_tower_support.name=Transmitter Tower Support
+tile.cable.name=Cable
+tile.belt_grinder.name=Belt Grinder
 
 fluid.mercury=Mercury
 fluid.hot_water=Hot Springs Water

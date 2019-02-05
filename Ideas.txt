@@ -1,4 +1,5 @@
 Silicone - Material
+Silica - Material
 Monocrystalline Silicone - Refined Material
 	Crystalizer: Silicon | Quartz
 Crystalizer - Machine
@@ -7,3 +8,29 @@ Solar Cell - Component
 	Crafting: Monocrystalline Silicone | Monocrystalline Silicone | Monocrystalline Silicone
 Crucible - Machine
 	Crafting: Terracotta | None | Terracotta | Terracotta | None | Terracotta | Terracotta | Terracotta | Terracotta
+Crystalizer: Silica | Silica-Quartz
+Sifter - Machine
+	Crafting: Iron Ingot | n | Iron Ingot | Iron Ingot | Sifting Sheet | Iron Ingot | Iron Ingot | n | Iron Ingot
+Sifter: Sand-Silica * 2 + Ground Stone
+Belt Grinder - Machine
+	Crafting: Iron Ingot | Iron Ingot | Iron Ingot | Gear | Gear | Gear | Iron Ingot | Iron Ingot | Iron Ingot
+Fabricator - Machine
+	Crafting: Iron Block | Iron Block | Iron Block | Furnace | Shears | Piston | Iron Block | Cable | Iron Block
+Gear Template - Part
+	Crafting: n | Stick | n | Stick | n | Stick | n | Stick | n
+Gear - Part
+	Fabricator: Iron Dust | Gear Template
+Iron Dust - Material
+	Belt Grinder(2): Iron Ingot
+Belt Grinder: Quartz-2*Silica
+Lead Dust - Material
+	Belt Grinder(2): Lead Ingot
+Electrolytes - Material
+	Crafting: Water Bucket | Salt
+Salt - Material
+Gelled Electrolytes - Material
+	Crafting: Electrolyes | Silica
+Absorbed Glass Mat - Part
+	Crafting: Glass Fibre | Electrolyte | Glass Fibre
+Glass Fibre - Material
+	Fabricator: Glass | Silica 

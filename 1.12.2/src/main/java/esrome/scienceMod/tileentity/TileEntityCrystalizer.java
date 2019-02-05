@@ -32,7 +32,7 @@ public class TileEntityCrystalizer extends TileEntity implements ITickable {
 	public boolean hasCapability(Capability<?> capability, EnumFacing facing) 
 	{
 		if(capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) return true;
-		if(capability == CapabilityEnergy.ENERGY) return true;
+		if(capability == CapabilityEnergy.ENERGY && facing!=EnumFacing.getHorizontal(this.facing)) return true;
 		else return false;
 	}
 	
@@ -40,7 +40,7 @@ public class TileEntityCrystalizer extends TileEntity implements ITickable {
 	public <T> T getCapability(Capability<T> capability, EnumFacing facing) 
 	{
 		if(capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) return (T) this.handler;
-		if(capability == CapabilityEnergy.ENERGY) return (T)this.storage;
+		if(capability == CapabilityEnergy.ENERGY && facing!=EnumFacing.getHorizontal(this.facing)) return (T)this.storage;
 		return super.getCapability(capability, facing);
 	}
 	
@@ -97,8 +97,7 @@ public class TileEntityCrystalizer extends TileEntity implements ITickable {
 	}
 	
 	@Override
-	public void update()
-	{
+	public void update(){
 		if(world.isBlockPowered(pos) && energy<getMaxEnergyStored()) energy += 100;
 		if(energy>getMaxEnergyStored()) energy = getMaxEnergyStored();
 		int worldFacing = world.getBlockState(pos).getValue(BlockCrystalizer.FACING).getHorizontalIndex();
@@ -109,7 +108,7 @@ public class TileEntityCrystalizer extends TileEntity implements ITickable {
 		ItemStack stack1 = handler.getStackInSlot(1);
 		ItemStack output = RecipesCrystalizer.getOutput(stack, stack1);
 		if(energy>=3 && handler!=null) {
-			if(handler.getStackInSlot(2).getCount()<=64-output.getCount() && output!=null && (output.isItemEqual(handler.getStackInSlot(2))||handler.getStackInSlot(2).getCount()==0)){
+			if(handler!=null && output!=null)if(handler.getStackInSlot(2).getCount()<=64-output.getCount() && output!=null && (output.isItemEqual(handler.getStackInSlot(2))||handler.getStackInSlot(2).getCount()==0)){
 				currentBurnTime++;
 				energy-=3;
 				if(currentBurnTime==burnTime) {

@@ -5,6 +5,7 @@ import java.util.Random;
 import esrome.scienceMod.ScienceMod;
 import esrome.scienceMod.blocks.BlockBase;
 import esrome.scienceMod.init.ModBlocks;
+import esrome.scienceMod.tileentity.TileEntityCable;
 import esrome.scienceMod.tileentity.TileEntityTransmitterTower;
 import esrome.scienceMod.util.Reference;
 import net.minecraft.block.Block;
@@ -22,18 +23,23 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockTransmitterTowerSupport extends BlockBase {
 
     public static final PropertyDirection FACING = BlockHorizontal.FACING;
     public static final PropertyBool STRAIGHT = PropertyBool.create("straight");
+    public static final PropertyBool N = PropertyBool.create("n");
+    public static final PropertyBool E = PropertyBool.create("e");
+    public static final PropertyBool S = PropertyBool.create("s");
+    public static final PropertyBool W = PropertyBool.create("w");
     protected static final AxisAlignedBB AABB_WE = new AxisAlignedBB(0.0D, 0.4375D, 0.4375D, 1.0D, 0.75D, 0.5625D);
     protected static final AxisAlignedBB AABB_NS = new AxisAlignedBB(0.4375D, 0.4375D, 0.0D, 0.5625D, 0.75D, 1.0D);
     
@@ -42,8 +48,8 @@ public class BlockTransmitterTowerSupport extends BlockBase {
 	}
 	
 	@Override
+	@SideOnly(Side.SERVER)
 	public void neighborChanged(IBlockState state, World worldIn, BlockPos pos, Block blockIn, BlockPos fromPos) {
-		super.neighborChanged(state, worldIn, pos, blockIn, fromPos);
 		Block block = worldIn.getBlockState(pos.offset(state.getValue(FACING).getOpposite())).getBlock();
 		if(!(block==ModBlocks.TRANSMITTER_TOWER_BASE || block==ModBlocks.TRANSMITTER_TOWER_SUPPORT)){
 			worldIn.setBlockToAir(pos);
@@ -57,7 +63,87 @@ public class BlockTransmitterTowerSupport extends BlockBase {
 				worldIn.setBlockState(pos, state.withProperty(STRAIGHT, false));
 			}
 		}
+		TileEntityTransmitterTower te = (TileEntityTransmitterTower) worldIn.getTileEntity(pos);
+        boolean n = false;
+        boolean s = false;
+        boolean w = false;
+        boolean e = false;
+        if(state.getValue(FACING)==EnumFacing.NORTH || state.getValue(FACING) == EnumFacing.SOUTH) {
+        	if(worldIn.getTileEntity(pos.offset(EnumFacing.EAST)) instanceof TileEntityCable) {
+        		e = true;
+        	}
+        	if(worldIn.getTileEntity(pos.offset(EnumFacing.WEST)) instanceof TileEntityCable) {
+        		w = true;
+        	}
+        }else if(state.getValue(FACING)==EnumFacing.EAST || state.getValue(FACING) == EnumFacing.WEST) {
+        	if(worldIn.getTileEntity(pos.offset(EnumFacing.NORTH)) instanceof TileEntityCable) {
+        		n = true;
+        	}
+        	if(worldIn.getTileEntity(pos.offset(EnumFacing.SOUTH)) instanceof TileEntityCable) {
+        		s = true;
+        	}
+        }
+        System.out.println("N: " + n + " S: " + s + " E: " + e + " W: " + w);
+        te.setN(n);
+        te.setS(s);
+        te.setW(w);
+        te.setE(e);
+        worldIn.setBlockState(pos, state.withProperty(N, n).withProperty(E, e).withProperty(S, s).withProperty(W, w));
 	}
+	
+	@Override
+	@SideOnly(Side.SERVER)
+	public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack) {
+		Block block = worldIn.getBlockState(pos.offset(state.getValue(FACING).getOpposite())).getBlock();
+		if(!(block==ModBlocks.TRANSMITTER_TOWER_BASE || block==ModBlocks.TRANSMITTER_TOWER_SUPPORT)){
+			worldIn.setBlockToAir(pos);
+			worldIn.spawnEntity(new EntityItem(worldIn, pos.getX(), pos.getY(), pos.getZ(), new ItemStack(ModBlocks.TRANSMITTER_TOWER_SUPPORT, 1)));
+		}
+		Block block1 = worldIn.getBlockState(pos.offset(state.getValue(FACING))).getBlock();
+		if((block==ModBlocks.TRANSMITTER_TOWER_SUPPORT || block==ModBlocks.TRANSMITTER_TOWER_BASE) && (block1==ModBlocks.TRANSMITTER_TOWER_SUPPORT || block1==ModBlocks.TRANSMITTER_TOWER_BASE)) {
+			worldIn.setBlockState(pos, state.withProperty(STRAIGHT, true));
+		}else {
+			if(worldIn.getBlockState(pos).getValue(STRAIGHT)==true) {
+				worldIn.setBlockState(pos, state.withProperty(STRAIGHT, false));
+			}
+		}
+		TileEntityTransmitterTower te = (TileEntityTransmitterTower) worldIn.getTileEntity(pos);
+        boolean n = false;
+        boolean s = false;
+        boolean w = false;
+        boolean e = false;
+        if(state.getValue(FACING)==EnumFacing.NORTH || state.getValue(FACING) == EnumFacing.SOUTH) {
+        	if(worldIn.getTileEntity(pos.offset(EnumFacing.EAST)) instanceof TileEntityCable) {
+        		e = true;
+        	}
+        	if(worldIn.getTileEntity(pos.offset(EnumFacing.WEST)) instanceof TileEntityCable) {
+        		w = true;
+        	}
+        }else if(state.getValue(FACING)==EnumFacing.EAST || state.getValue(FACING) == EnumFacing.WEST) {
+        	if(worldIn.getTileEntity(pos.offset(EnumFacing.NORTH)) instanceof TileEntityCable) {
+        		n = true;
+        	}
+        	if(worldIn.getTileEntity(pos.offset(EnumFacing.SOUTH)) instanceof TileEntityCable) {
+        		s = true;
+        	}
+        }
+        System.out.println("N: " + n + " S: " + s + " E: " + e + " W: " + w);
+        te.setN(n);
+        te.setS(s);
+        te.setW(w);
+        te.setE(e);
+        worldIn.setBlockState(pos, state.withProperty(N, n).withProperty(E, e).withProperty(S, s).withProperty(W, w));
+	}
+	
+	@Override
+    public IBlockState getActualState(IBlockState state, IBlockAccess worldIn, BlockPos pos) {
+		state = super.getActualState(state, worldIn, pos);
+    	TileEntityTransmitterTower te = (TileEntityTransmitterTower) worldIn.getTileEntity(pos);
+        return state.withProperty(N, te.isN())
+                .withProperty(E, te.isE())
+                .withProperty(S, te.isS())
+                .withProperty(W, te.isW());
+    }
 	
 	@Override
 	public boolean canPlaceBlockOnSide(World worldIn, BlockPos pos, EnumFacing side) {
@@ -141,7 +227,7 @@ public class BlockTransmitterTowerSupport extends BlockBase {
     }
 
     protected BlockStateContainer createBlockState(){
-        return new BlockStateContainer(this, new IProperty[] {FACING, STRAIGHT});
+        return new BlockStateContainer(this, new IProperty[] {FACING, STRAIGHT, N, E, S, W});
     }
 	
 }

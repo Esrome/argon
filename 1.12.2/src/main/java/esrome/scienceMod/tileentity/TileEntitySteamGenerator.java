@@ -1,5 +1,6 @@
 package esrome.scienceMod.tileentity;
 
+import esrome.scienceMod.blocks.machines.BlockSteamGenerator;
 import esrome.scienceMod.energy.ElectricityStorage;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
@@ -8,7 +9,6 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.text.ITextComponent;
@@ -30,23 +30,28 @@ public class TileEntitySteamGenerator extends TileEntity implements ITickable{
 	public int maxSteam = 1000;
 	public int fuelTime = 0;
 	public int maxFuelTime=0;
+	public int facing;
 	
 	@Override
 	public <T> T getCapability(Capability<T> capability, EnumFacing facing) {
-		if(capability == CapabilityEnergy.ENERGY) return (T)this.storage;
+		if(capability == CapabilityEnergy.ENERGY && (facing==EnumFacing.getHorizontal(this.facing).rotateY() || facing==EnumFacing.getHorizontal(this.facing).rotateYCCW())) return (T)this.storage;
 		if(capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) return (T)this.handler;
 		return super.getCapability(capability, facing);
 	}
 	
 	@Override
 	public boolean hasCapability(Capability<?> capability, EnumFacing facing) {
-		if(capability == CapabilityEnergy.ENERGY) return true;
+		if(capability == CapabilityEnergy.ENERGY && (facing==EnumFacing.getHorizontal(this.facing).rotateY() || facing==EnumFacing.getHorizontal(this.facing).rotateYCCW())) return true;
 		if(capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) return true;
 		return super.hasCapability(capability, facing);
 	}
 	
 	@Override
 	public void update() {
+		int worldFacing = world.getBlockState(pos).getValue(BlockSteamGenerator.FACING).getHorizontalIndex();
+		if(worldFacing!=facing) {
+			this.facing=worldFacing;
+		}
 		if(fuelTime>0) {
 			fuelTime--;
 		}
@@ -89,6 +94,23 @@ public class TileEntitySteamGenerator extends TileEntity implements ITickable{
 				}
 			}
 		}else if(cookTime>0)cookTime--;
+		EnumFacing thisFacing = EnumFacing.getHorizontal(facing);
+		TileEntity te = world.getTileEntity(pos.offset(thisFacing.rotateY()));
+		if(te.hasCapability(CapabilityEnergy.ENERGY, thisFacing.rotateYCCW())) {
+			int extract = this.storage.getMaxExtract();
+			if(extract>energy) {
+				extract = energy;
+			}
+			this.energy-=te.getCapability(CapabilityEnergy.ENERGY, thisFacing.rotateYCCW()).receiveEnergy(extract, false);
+		}
+		te = world.getTileEntity(pos.offset(thisFacing.rotateYCCW()));
+		if(te.hasCapability(CapabilityEnergy.ENERGY, thisFacing.rotateY())) {
+			int extract = this.storage.getMaxExtract();
+			if(extract>energy) {
+				extract = energy;
+			}
+			this.energy-=te.getCapability(CapabilityEnergy.ENERGY, thisFacing.rotateY()).receiveEnergy(extract, false);
+		}
 	}
 	
 	public static boolean isItemHot(ItemStack stack) {

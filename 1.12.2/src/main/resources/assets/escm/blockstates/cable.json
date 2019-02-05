@@ -1,0 +1,63 @@
+{
+  "forge_marker" : 1,
+  "defaults" : {
+    "textures" : {
+      "texture" : "escm:blocks/cable"
+    },
+    "model" : "escm:cable",
+    "uvlock" : true
+  },
+  "variants" : {
+    "normal" : {
+      "model" : "escm:cable"
+    },
+    "u" : {
+      "true" : {
+        "submodel": "escm:cable_u"
+      },
+      "false" : {
+
+      }
+    },
+    "d" : {
+      "true" : {
+        "submodel": "escm:cable_d"
+      },
+      "false" : {
+
+      }
+    },
+    "n" : {
+      "true" : {
+        "submodel": "escm:cable_n"
+      },
+      "false" : {
+
+      }
+    },
+    "s" : {
+      "true" : {
+        "submodel": "escm:cable_s"
+      },
+      "false" : {
+
+      }
+    },
+    "w" : {
+      "true" : {
+        "submodel": "escm:cable_w"
+      },
+      "false" : {
+
+      }
+    },
+    "e" : {
+      "true" : {
+        "submodel": "escm:cable_e"
+      },
+      "false" : {
+
+      }
+    }
+  }
+}

@@ -1,13 +1,40 @@
 {
-    "variants": 
-    {
-        "facing=north,straight=false": { "model": "escm:transmitter_tower_support"},
-        "facing=east,straight=false": { "model": "escm:transmitter_tower_support", "y": 90},
-        "facing=south,straight=false": { "model": "escm:transmitter_tower_support", "y": 180},
-        "facing=west,straight=false": { "model": "escm:transmitter_tower_support", "y": 270},
-        "facing=north,straight=true": { "model": "escm:transmitter_tower_support_straight"},
-        "facing=east,straight=true": { "model": "escm:transmitter_tower_support_straight", "y": 90},
-        "facing=south,straight=true": { "model": "escm:transmitter_tower_support_straight"},
-        "facing=west,straight=true": { "model": "escm:transmitter_tower_support_straight", "y": 90}
-    }
+   "multipart": [
+       {   "when": { "OR": [
+               { "facing": "north", "straight": "true" },
+               { "facing": "south", "straight": "true"}
+           ]},
+           "apply": { "model": "escm:transmitter_tower_support_straight" }
+       },
+       {   "when": { "OR": [
+               { "facing": "west", "straight": "true" },
+               { "facing": "east", "straight": "true" }
+           ]},
+           "apply": { "model": "escm:transmitter_tower_support_straight", "y" : 90 }
+       },
+       {   "when": { "facing": "north", "straight": "false" },
+           "apply": { "model": "escm:transmitter_tower_support" }
+       },
+       {   "when": { "facing": "south", "straight": "false" },
+           "apply": { "model": "escm:transmitter_tower_support", "y": 180 }
+       },
+       {   "when": { "facing": "west", "straight": "false" },
+           "apply": { "model": "escm:transmitter_tower_support", "y": 270 }
+       },
+       {   "when": { "facing": "east", "straight": "false" },
+           "apply": { "model": "escm:transmitter_tower_support", "y": 90 }
+       },
+       {   "when": { "n": "true"},
+           "apply": { "model": "escm:cable_n"}
+       },
+       {   "when": { "s": "true"},
+           "apply": { "model": "escm:cable_s"}
+       },
+       {   "when": { "w": "true"},
+           "apply": { "model": "escm:cable_w"}
+       },
+       {   "when": { "e": "true"},
+           "apply": { "model": "escm:cable_e"}
+       }
+   ]
 }

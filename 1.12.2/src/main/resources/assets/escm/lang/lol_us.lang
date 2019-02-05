@@ -1,6 +1,10 @@
 container.steam_generator=Magic Trickury Masheen
 container.crystalizer=Fanceh Makur
 container.transmitter_tower=Electrik Towur
+container.belt_grinder=Belt Smashur
+
+translation.energy=Electriks
+translation.energy_reader_fail=No Electriks
 
 item.radium_ingot.name=Danger Mineruhl Ingoht
 item.uranium_ingot.name=Big Boom Ingoht
@@ -8,6 +12,7 @@ item.lead_ingot.name=Led Ingut
 item.lead_nugget.name=Led Bit
 item.copper_ingot.name=Zappy Ingut
 item.copper_nugget.name=Zappy Bit
+item.lead_dust.name=Led Powdur
 
 tile.radium_ore.name=Rokz Wif Danger Mineruhl
 tile.radium_block.name=Danger Mineruhl Bluk
@@ -21,6 +26,8 @@ tile.copper_block.name=Zappy Bluk
 tile.steam_generator.name=Maek Watur Gone
 tile.transmitter_tower_base.name=Electrik Towur Barz
 tile.transmitter_tower_support.name=Electrik Towur Storer
+tile.cable.name=Wiar
+tile.belt_grinder.name=Belt Smashur
 
 fluid.mercury=Ouch Metul
 fluid.hot_water=Almohst Ouch Watur

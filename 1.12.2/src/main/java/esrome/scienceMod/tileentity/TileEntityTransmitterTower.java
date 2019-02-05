@@ -1,9 +1,9 @@
 package esrome.scienceMod.tileentity;
 
+import esrome.scienceMod.blocks.energy.BlockTransmitterTowerSupport;
 import esrome.scienceMod.energy.ElectricityStorage;
-import esrome.scienceMod.recipes.RecipesCrystalizer;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
@@ -12,28 +12,58 @@ import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.energy.CapabilityEnergy;
-import net.minecraftforge.items.CapabilityItemHandler;
-import net.minecraftforge.items.ItemStackHandler;
 
 public class TileEntityTransmitterTower extends TileEntity implements ITickable {
 
 	private ElectricityStorage storage = new ElectricityStorage(2000, 100);
 	private String customName;
 	public int energy = storage.getEnergyStored();
+	public int facing;
+	public boolean n = false, e = false, s = false, w = false;
+	public static EnumFacing[] faces = {EnumFacing.WEST, EnumFacing.SOUTH, EnumFacing.NORTH, EnumFacing.EAST};
 
 	@Override
 	public boolean hasCapability(Capability<?> capability, EnumFacing facing) 
 	{
-		if(capability == CapabilityEnergy.ENERGY) return true;
+		if(capability == CapabilityEnergy.ENERGY && (facing == EnumFacing.getHorizontal(this.facing).rotateY() || facing == EnumFacing.getHorizontal(this.facing).rotateYCCW())) return true;
 		else return false;
 	}
 	
 	@Override
 	public <T> T getCapability(Capability<T> capability, EnumFacing facing) 
 	{
-		if(capability == CapabilityEnergy.ENERGY) return (T)this.storage;
+		if(capability == CapabilityEnergy.ENERGY && (facing == EnumFacing.getHorizontal(this.facing).rotateY() || facing == EnumFacing.getHorizontal(this.facing).rotateYCCW())) return (T)this.storage;
 		return super.getCapability(capability, facing);
 	}
+	
+	public void setE(boolean e) {
+        this.e = e;
+        markDirty();
+    }
+    public void setN(boolean n) {
+        this.n = n;
+        markDirty();
+    }
+    public void setS(boolean s) {
+        this.s = s;
+        markDirty();
+    }
+    public void setW(boolean w) {
+        this.w = w;
+        markDirty();
+    }
+	public boolean isE() {
+        return e;
+    }
+    public boolean isN() {
+        return n;
+    }
+    public boolean isS() {
+        return s;
+    }
+    public boolean isW() {
+        return w;
+    }
 	
 	public int getEnergyStored() {
 		return this.energy;
@@ -66,6 +96,10 @@ public class TileEntityTransmitterTower extends TileEntity implements ITickable 
 		this.customName = compound.getString("CustomName");
 		this.energy = compound.getInteger("GuiEnergy");
 		this.storage.readFromNBT(compound);
+		this.e = compound.getBoolean("E");
+		this.w = compound.getBoolean("W");
+		this.s = compound.getBoolean("S");
+		this.n = compound.getBoolean("N");
 		if(compound.hasKey("CustomName", 8)) this.setCustomName(compound.getString("CustomName"));
 	}
 	
@@ -75,16 +109,35 @@ public class TileEntityTransmitterTower extends TileEntity implements ITickable 
 		super.writeToNBT(compound);
 		compound.setString("CustomName", getDisplayName().toString());
 		compound.setInteger("GuiEnergy", this.energy);
+		compound.setBoolean("N", n);
+		compound.setBoolean("E", e);
+		compound.setBoolean("S", s);
+		compound.setBoolean("W", w);
 		
 		if(this.hasCustomName()) compound.setString("CustomName", this.customName);
 		return compound;
 	}
+	
+	private void notifyBlockUpdate() {
+        final IBlockState state = getWorld().getBlockState(getPos());
+        getWorld().notifyBlockUpdate(getPos(), state, state, 3);
+    }
+	
+	@Override
+    public void markDirty() {
+        super.markDirty();
+        notifyBlockUpdate();
+    }
 	
 	@Override
 	public void update()
 	{
 		if(world.isBlockPowered(pos) && energy<getMaxEnergyStored()) energy += 100;
 		if(energy>getMaxEnergyStored()) energy = getMaxEnergyStored();
+		int worldFacing = world.getBlockState(pos).getValue(BlockTransmitterTowerSupport.FACING).getHorizontalIndex();
+		if(worldFacing!=facing) {
+			this.facing=worldFacing;
+		}
 	}
 	
 	public boolean isUsableByPlayer(EntityPlayer player) 

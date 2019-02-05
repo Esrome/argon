@@ -1,0 +1,9 @@
+{
+    "variants": 
+    {
+        "facing=north": { "model": "escm:belt_grinder" },
+        "facing=east": { "model": "escm:belt_grinder", "y": 90 },
+        "facing=south": { "model": "escm:belt_grinder", "y": 180 },
+        "facing=west": { "model": "escm:belt_grinder", "y": 270 }
+    }
+}
