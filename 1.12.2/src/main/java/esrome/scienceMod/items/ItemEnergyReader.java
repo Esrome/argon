@@ -17,6 +17,7 @@ public class ItemEnergyReader extends ItemBase {
 
 	public ItemEnergyReader(String name) {
 		super(name, ScienceMod.TAB);
+		setMaxStackSize(1);
 	}
 	
 	@Override
@@ -24,13 +25,15 @@ public class ItemEnergyReader extends ItemBase {
 	public EnumActionResult onItemUse(EntityPlayer player, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
 		TileEntity te = worldIn.getTileEntity(pos);
 		if(te!=null && worldIn.isRemote) {
-			if(te.hasCapability(CapabilityEnergy.ENERGY, facing)) {
-				player.sendMessage(new TextComponentTranslation("translation.energy").appendText(": " + String.valueOf(te.getCapability(CapabilityEnergy.ENERGY, facing).getEnergyStored())));
-			}else {
-				player.sendMessage(new TextComponentTranslation("translation.energy_reader_fail"));
+			for(EnumFacing face: EnumFacing.VALUES) {
+				if(te.hasCapability(CapabilityEnergy.ENERGY, face)) {
+					player.sendMessage(new TextComponentTranslation("translation.energy").appendText(": " + String.valueOf(te.getCapability(CapabilityEnergy.ENERGY, face).getEnergyStored())));
+					return EnumActionResult.SUCCESS;
+				}
 			}
+			player.sendMessage(new TextComponentTranslation("translation.energy_reader_fail"));
 		}
-		return EnumActionResult.SUCCESS;
+		return EnumActionResult.PASS;
 	}
 
 }

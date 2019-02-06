@@ -7,6 +7,7 @@ import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ITickable;
@@ -92,12 +93,14 @@ public class TileEntityCrystalizer extends TileEntity implements ITickable {
 		compound.setString("CustomName", getDisplayName().toString());
 		compound.setInteger("GuiEnergy", this.energy);
 		compound.setInteger("Facing", this.facing);
+		storage.writeToNBT(compound);
 		if(this.hasCustomName()) compound.setString("CustomName", this.customName);
 		return compound;
 	}
 	
 	@Override
 	public void update(){
+		energy = storage.getEnergyStored();
 		if(world.isBlockPowered(pos) && energy<getMaxEnergyStored()) energy += 100;
 		if(energy>getMaxEnergyStored()) energy = getMaxEnergyStored();
 		int worldFacing = world.getBlockState(pos).getValue(BlockCrystalizer.FACING).getHorizontalIndex();
@@ -127,6 +130,8 @@ public class TileEntityCrystalizer extends TileEntity implements ITickable {
 		}else if(currentBurnTime>0) {
 			currentBurnTime--;
 		}
+		storage.setEnergy(energy);
+		markDirty();
 	}
 	
 	public boolean isUsableByPlayer(EntityPlayer player) 

@@ -48,6 +48,7 @@ public class TileEntitySteamGenerator extends TileEntity implements ITickable{
 	
 	@Override
 	public void update() {
+		this.energy = storage.getEnergyStored();
 		int worldFacing = world.getBlockState(pos).getValue(BlockSteamGenerator.FACING).getHorizontalIndex();
 		if(worldFacing!=facing) {
 			this.facing=worldFacing;
@@ -96,7 +97,7 @@ public class TileEntitySteamGenerator extends TileEntity implements ITickable{
 		}else if(cookTime>0)cookTime--;
 		EnumFacing thisFacing = EnumFacing.getHorizontal(facing);
 		TileEntity te = world.getTileEntity(pos.offset(thisFacing.rotateY()));
-		if(te.hasCapability(CapabilityEnergy.ENERGY, thisFacing.rotateYCCW())) {
+		if(te!=null)if(te.hasCapability(CapabilityEnergy.ENERGY, thisFacing.rotateYCCW())) {
 			int extract = this.storage.getMaxExtract();
 			if(extract>energy) {
 				extract = energy;
@@ -104,13 +105,15 @@ public class TileEntitySteamGenerator extends TileEntity implements ITickable{
 			this.energy-=te.getCapability(CapabilityEnergy.ENERGY, thisFacing.rotateYCCW()).receiveEnergy(extract, false);
 		}
 		te = world.getTileEntity(pos.offset(thisFacing.rotateYCCW()));
-		if(te.hasCapability(CapabilityEnergy.ENERGY, thisFacing.rotateY())) {
+		if(te!=null)if(te.hasCapability(CapabilityEnergy.ENERGY, thisFacing.rotateY())) {
 			int extract = this.storage.getMaxExtract();
 			if(extract>energy) {
 				extract = energy;
 			}
 			this.energy-=te.getCapability(CapabilityEnergy.ENERGY, thisFacing.rotateY()).receiveEnergy(extract, false);
 		}
+		storage.setEnergy(this.energy);
+		markDirty();
 	}
 	
 	public static boolean isItemHot(ItemStack stack) {

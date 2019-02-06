@@ -69,4 +69,8 @@ public class ElectricityStorage extends EnergyStorage {
 		return this.maxExtract;
 	}
 	
+	public void setEnergy(int value) {
+		this.energy = value;
+	}
+	
 }

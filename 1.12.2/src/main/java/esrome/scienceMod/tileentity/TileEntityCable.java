@@ -115,6 +115,7 @@ public class TileEntityCable extends TileEntity implements ITickable {
     @Override
     public void update() {
         if(storage.getEnergyStored() > 0) extractAnywhereConnected(this, storage);
+        markDirty();
     }
 
     public static EnumFacing[] faces = {EnumFacing.UP, EnumFacing.DOWN, EnumFacing.WEST, EnumFacing.SOUTH, EnumFacing.NORTH, EnumFacing.EAST};

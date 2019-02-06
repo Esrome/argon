@@ -5,11 +5,11 @@ import java.util.Random;
 import esrome.scienceMod.ScienceMod;
 import esrome.scienceMod.blocks.BlockBase;
 import esrome.scienceMod.init.ModBlocks;
-import esrome.scienceMod.tileentity.TileEntityCable;
 import esrome.scienceMod.tileentity.TileEntityTransmitterTower;
 import esrome.scienceMod.util.Reference;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockHorizontal;
+import net.minecraft.block.BlockRedstoneWire;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
@@ -29,8 +29,10 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.client.model.pipeline.ForgeBlockModelRenderer;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import net.minecraftforge.registries.ForgeRegistry;
 
 public class BlockTransmitterTowerSupport extends BlockBase {
 
@@ -48,91 +50,42 @@ public class BlockTransmitterTowerSupport extends BlockBase {
 	}
 	
 	@Override
-	@SideOnly(Side.SERVER)
 	public void neighborChanged(IBlockState state, World worldIn, BlockPos pos, Block blockIn, BlockPos fromPos) {
-		Block block = worldIn.getBlockState(pos.offset(state.getValue(FACING).getOpposite())).getBlock();
-		if(!(block==ModBlocks.TRANSMITTER_TOWER_BASE || block==ModBlocks.TRANSMITTER_TOWER_SUPPORT)){
-			worldIn.setBlockToAir(pos);
-			worldIn.spawnEntity(new EntityItem(worldIn, pos.getX(), pos.getY(), pos.getZ(), new ItemStack(ModBlocks.TRANSMITTER_TOWER_SUPPORT, 1)));
-		}
-		Block block1 = worldIn.getBlockState(pos.offset(state.getValue(FACING))).getBlock();
-		if((block==ModBlocks.TRANSMITTER_TOWER_SUPPORT || block==ModBlocks.TRANSMITTER_TOWER_BASE) && (block1==ModBlocks.TRANSMITTER_TOWER_SUPPORT || block1==ModBlocks.TRANSMITTER_TOWER_BASE)) {
-			worldIn.setBlockState(pos, state.withProperty(STRAIGHT, true));
-		}else {
-			if(worldIn.getBlockState(pos).getValue(STRAIGHT)==true) {
-				worldIn.setBlockState(pos, state.withProperty(STRAIGHT, false));
-			}
-		}
-		TileEntityTransmitterTower te = (TileEntityTransmitterTower) worldIn.getTileEntity(pos);
-        boolean n = false;
-        boolean s = false;
-        boolean w = false;
-        boolean e = false;
-        if(state.getValue(FACING)==EnumFacing.NORTH || state.getValue(FACING) == EnumFacing.SOUTH) {
-        	if(worldIn.getTileEntity(pos.offset(EnumFacing.EAST)) instanceof TileEntityCable) {
-        		e = true;
-        	}
-        	if(worldIn.getTileEntity(pos.offset(EnumFacing.WEST)) instanceof TileEntityCable) {
-        		w = true;
-        	}
-        }else if(state.getValue(FACING)==EnumFacing.EAST || state.getValue(FACING) == EnumFacing.WEST) {
-        	if(worldIn.getTileEntity(pos.offset(EnumFacing.NORTH)) instanceof TileEntityCable) {
-        		n = true;
-        	}
-        	if(worldIn.getTileEntity(pos.offset(EnumFacing.SOUTH)) instanceof TileEntityCable) {
-        		s = true;
-        	}
-        }
-        System.out.println("N: " + n + " S: " + s + " E: " + e + " W: " + w);
-        te.setN(n);
-        te.setS(s);
-        te.setW(w);
-        te.setE(e);
-        worldIn.setBlockState(pos, state.withProperty(N, n).withProperty(E, e).withProperty(S, s).withProperty(W, w));
+		super.neighborChanged(state, worldIn, pos, blockIn, fromPos);
+		worldIn.scheduleUpdate(pos, blockIn, 1);
 	}
 	
 	@Override
-	@SideOnly(Side.SERVER)
 	public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack) {
-		Block block = worldIn.getBlockState(pos.offset(state.getValue(FACING).getOpposite())).getBlock();
-		if(!(block==ModBlocks.TRANSMITTER_TOWER_BASE || block==ModBlocks.TRANSMITTER_TOWER_SUPPORT)){
+		super.onBlockPlacedBy(worldIn, pos, state, placer, stack);
+		worldIn.scheduleUpdate(pos, state.getBlock(), 1);
+	}
+	
+	@Override
+	public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {
+		super.updateTick(worldIn, pos, state, rand);
+		if(!worldIn.isRemote)updateState(worldIn, pos, state);
+	}
+	
+	public static void updateState(World worldIn, BlockPos pos, IBlockState state) {
+		IBlockState state1 = worldIn.getBlockState(pos.offset(state.getValue(FACING).getOpposite()));
+		IBlockState state2 = worldIn.getBlockState(pos.offset(state.getValue(FACING)));
+		if(!(state1.getBlock()==ModBlocks.TRANSMITTER_TOWER_BASE || state1.getBlock()==ModBlocks.TRANSMITTER_TOWER_SUPPORT)) {
 			worldIn.setBlockToAir(pos);
-			worldIn.spawnEntity(new EntityItem(worldIn, pos.getX(), pos.getY(), pos.getZ(), new ItemStack(ModBlocks.TRANSMITTER_TOWER_SUPPORT, 1)));
+			worldIn.spawnEntity(new EntityItem(worldIn, pos.getX(), pos.getY(), pos.getZ(), new ItemStack(Item.getItemFromBlock(ModBlocks.TRANSMITTER_TOWER_SUPPORT))));
+			return;
 		}
-		Block block1 = worldIn.getBlockState(pos.offset(state.getValue(FACING))).getBlock();
-		if((block==ModBlocks.TRANSMITTER_TOWER_SUPPORT || block==ModBlocks.TRANSMITTER_TOWER_BASE) && (block1==ModBlocks.TRANSMITTER_TOWER_SUPPORT || block1==ModBlocks.TRANSMITTER_TOWER_BASE)) {
+		if(state2.getBlock()==ModBlocks.TRANSMITTER_TOWER_BASE) {
 			worldIn.setBlockState(pos, state.withProperty(STRAIGHT, true));
-		}else {
-			if(worldIn.getBlockState(pos).getValue(STRAIGHT)==true) {
-				worldIn.setBlockState(pos, state.withProperty(STRAIGHT, false));
+			return;
+		}
+		if(state2.getBlock()==ModBlocks.TRANSMITTER_TOWER_BASE) {
+			if(state2.getValue(FACING).getAxis()==state.getValue(FACING).getAxis()) {
+				worldIn.setBlockState(pos, state.withProperty(STRAIGHT, true));
+				return;
 			}
 		}
-		TileEntityTransmitterTower te = (TileEntityTransmitterTower) worldIn.getTileEntity(pos);
-        boolean n = false;
-        boolean s = false;
-        boolean w = false;
-        boolean e = false;
-        if(state.getValue(FACING)==EnumFacing.NORTH || state.getValue(FACING) == EnumFacing.SOUTH) {
-        	if(worldIn.getTileEntity(pos.offset(EnumFacing.EAST)) instanceof TileEntityCable) {
-        		e = true;
-        	}
-        	if(worldIn.getTileEntity(pos.offset(EnumFacing.WEST)) instanceof TileEntityCable) {
-        		w = true;
-        	}
-        }else if(state.getValue(FACING)==EnumFacing.EAST || state.getValue(FACING) == EnumFacing.WEST) {
-        	if(worldIn.getTileEntity(pos.offset(EnumFacing.NORTH)) instanceof TileEntityCable) {
-        		n = true;
-        	}
-        	if(worldIn.getTileEntity(pos.offset(EnumFacing.SOUTH)) instanceof TileEntityCable) {
-        		s = true;
-        	}
-        }
-        System.out.println("N: " + n + " S: " + s + " E: " + e + " W: " + w);
-        te.setN(n);
-        te.setS(s);
-        te.setW(w);
-        te.setE(e);
-        worldIn.setBlockState(pos, state.withProperty(N, n).withProperty(E, e).withProperty(S, s).withProperty(W, w));
+		if(state.getValue(STRAIGHT))worldIn.setBlockState(pos, state.withProperty(STRAIGHT, false));
 	}
 	
 	@Override

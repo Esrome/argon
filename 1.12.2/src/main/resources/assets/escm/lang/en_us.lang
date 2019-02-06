@@ -13,6 +13,7 @@ item.copper_nugget.name=Copper Nugget
 item.lead_ingot.name=Lead Ingot
 item.lead_nugget.name=Lead Nugget
 item.lead_dust.name=Lead Dust
+item.energy_reader.name=Energy Reader
 
 tile.radium_ore.name=Radium Ore
 tile.radium_block.name=Radium Block

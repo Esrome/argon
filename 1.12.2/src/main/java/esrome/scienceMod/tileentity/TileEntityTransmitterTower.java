@@ -130,14 +130,16 @@ public class TileEntityTransmitterTower extends TileEntity implements ITickable 
     }
 	
 	@Override
-	public void update()
-	{
+	public void update(){
+		energy = storage.getEnergyStored();
 		if(world.isBlockPowered(pos) && energy<getMaxEnergyStored()) energy += 100;
 		if(energy>getMaxEnergyStored()) energy = getMaxEnergyStored();
 		int worldFacing = world.getBlockState(pos).getValue(BlockTransmitterTowerSupport.FACING).getHorizontalIndex();
 		if(worldFacing!=facing) {
 			this.facing=worldFacing;
 		}
+		storage.setEnergy(energy);
+		markDirty();
 	}
 	
 	public boolean isUsableByPlayer(EntityPlayer player) 

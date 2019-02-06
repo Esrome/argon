@@ -29,6 +29,7 @@ public class RegistryHandler {
 	{
 		event.getRegistry().registerAll(ModBlocks.BLOCKS.toArray(new Block[0]));
 		TileEntityHandler.registerTileEntities();
+		RenderHandler.registerTileEntitySpecialRenderers();
 	}
 	
 	@SubscribeEvent
@@ -58,7 +59,6 @@ public class RegistryHandler {
 		GameRegistry.registerWorldGenerator(new WorldGenMetalOres(), 0);
 		
 		RenderHandler.registerCustomMeshesAndStates();
-		ScienceMod.proxy.registerRenderers();
 	}
 	
 	public static void init() {

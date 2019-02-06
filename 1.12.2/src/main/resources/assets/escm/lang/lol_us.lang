@@ -13,6 +13,7 @@ item.lead_nugget.name=Led Bit
 item.copper_ingot.name=Zappy Ingut
 item.copper_nugget.name=Zappy Bit
 item.lead_dust.name=Led Powdur
+item.energy_reader.name=Electriks Tellur
 
 tile.radium_ore.name=Rokz Wif Danger Mineruhl
 tile.radium_block.name=Danger Mineruhl Bluk
