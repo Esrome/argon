@@ -1,0 +1,24 @@
+{
+    "type": "minecraft:crafting_shaped",
+    
+    "pattern":
+    [
+        "MMM",
+        "MMM",
+        "MMM"    
+    ],
+    
+    "key":
+    {
+        "M":
+        {
+            "item": "escm:radium_ingot"
+        }
+    },
+    
+    "result":
+    {
+        "item": "escm:radium_block",
+        "count": 1
+    }
+}

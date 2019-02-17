@@ -1,0 +1,15 @@
+Solar Cell - Component
+	Crafting: Monocrystalline Silicone | Monocrystalline Silicone | Monocrystalline Silicone
+Sifter - Machine
+	Crafting: Iron Ingot | n | Iron Ingot | Iron Ingot | Sifting Sheet | Iron Ingot | Iron Ingot | n | Iron Ingot
+Sifter: Sand-Silica * 2 + Ground Stone
+Fabricator - Machine
+	Crafting: Iron Block | Iron Block | Iron Block | Gear | Shears | Gear | Furnace | Cable | Piston
+Electrolytes - Material
+	Crafting: Water Bucket | Salt
+Gelled Electrolytes - Material
+	Crafting: Electrolyes | Silica
+Absorbed Glass Mat - Part
+	Crafting: Glass Fibre | Electrolytes | Glass Fibre
+Glass Fibre - Material
+	Fabricator: Glass | Silica 

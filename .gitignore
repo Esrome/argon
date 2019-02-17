@@ -31,3 +31,30 @@
 
 # PDT-specific
 1.12.2/.buildpath
+/.metadata/
+
+# eclipse
+bin
+*.launch
+essentials/1.13.2/.settings
+essentials/1.13.2/.metadata
+essentials/1.13.2/.classpath
+essentials/1.13.2/.project
+
+# idea
+essentials/1.13.2/out
+*.ipr
+*.iws
+*.iml
+.idea
+
+# gradle
+essentials/1.13.2/build
+essentials/1.13.2/.gradle
+
+# other
+essentials/1.13.2/eclipse
+essentials/1.13.2/run
+
+# Files from Forge MDK
+forge*changelog.txt

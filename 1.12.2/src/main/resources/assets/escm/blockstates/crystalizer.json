@@ -1,9 +1,0 @@
-{
-    "variants": 
-    {
-        "facing=north": { "model": "escm:crystalizer" },
-        "facing=east": { "model": "escm:crystalizer", "y": 90 },
-        "facing=south": { "model": "escm:crystalizer", "y": 180 },
-        "facing=west": { "model": "escm:crystalizer", "y": 270 }
-    }
-}
