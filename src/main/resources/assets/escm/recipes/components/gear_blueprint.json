@@ -1,0 +1,29 @@
+{
+    "type": "minecraft:crafting_shaped",
+    
+    "pattern":
+    [
+        "T",
+        "W"      
+    ],
+    
+    "key":
+    {
+        "W":
+        {
+            "type": "forge:ore_dict",
+            "ore": "gearWood"
+        },
+        "T":
+        {
+            "type": "forge:ore_dict",
+            "ore": "blueprint"
+        }
+    },
+    
+    "result":
+    {
+        "item": "escm:gear_blueprint",
+        "count": 1
+    }
+}

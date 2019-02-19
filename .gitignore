@@ -1,60 +1,22 @@
-1.12.2/run/
-1.12.2/.gradle/
-1.12.2/build/
-1.12.2/gradle-app.setting
-
-## Eclipse
-
-1.12.2/eclipse/
-*.pydevproject
-1.12.2/.project
-1.12.2/.metadata
-1.12.2/bin/
-1.12.2/tmp/
-*.tmp
-*.bak
-*.swp
-*~.nib
-1.12.2/local.properties
-1.12.2/.classpath
-1.12.2/.settings/
-1.12.2/.loadpath
-
-# External tool builders
-1.12.2/.externalToolBuilders/
-
-# Locally stored "Eclipse launch configurations"
-*.launch
-
-# CDT-specific
-1.12.2/.cproject
-
-# PDT-specific
-1.12.2/.buildpath
-/.metadata/
-
 # eclipse
 bin
 *.launch
-essentials/1.13.2/.settings
-essentials/1.13.2/.metadata
-essentials/1.13.2/.classpath
-essentials/1.13.2/.project
+.settings
+.metadata
+.classpath
+.project
 
 # idea
-essentials/1.13.2/out
+out
 *.ipr
 *.iws
 *.iml
 .idea
 
 # gradle
-essentials/1.13.2/build
-essentials/1.13.2/.gradle
+build
+.gradle
 
 # other
-essentials/1.13.2/eclipse
-essentials/1.13.2/run
-
-# Files from Forge MDK
-forge*changelog.txt
+eclipse
+run

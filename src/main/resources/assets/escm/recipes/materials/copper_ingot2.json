@@ -1,0 +1,25 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "copper_ingot",
+    
+    "pattern":
+    [
+        "MMM",
+        "MMM",
+        "MMM" 
+    ],
+    
+    "key":
+    {
+        "M":
+        {
+            "item": "escm:copper_nugget"
+        }
+    },
+    
+    "result":
+    {
+        "item": "escm:copper_ingot",
+        "count": 1
+    }
+}

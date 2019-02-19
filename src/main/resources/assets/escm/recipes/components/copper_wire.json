@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    
+    "pattern":
+    [
+        "CCC"    
+    ],
+    
+    "key":
+    {
+        "C":
+        {
+            "item": "escm:copper_ingot"
+        }
+    },
+    
+    "result":
+    {
+        "item": "escm:copper_wire",
+        "count": 6
+    }
+}

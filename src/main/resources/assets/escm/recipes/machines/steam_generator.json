@@ -1,0 +1,34 @@
+{
+    "type": "minecraft:crafting_shaped",
+    
+    "pattern":
+    [
+        "MMM",
+        "GRG",
+        "MMM"      
+    ],
+    
+    "key":
+    {
+        "M":
+        {
+            "item": "minecraft:iron_ingot"
+        },
+        "R":
+        {
+            "type": "forge:ore_dict",
+            "ore": "rotor"
+        },
+        "G":
+        {
+            "type": "forge:ore_dict",
+            "ore": "generator"
+        }
+    },
+    
+    "result":
+    {
+        "item": "escm:steam_generator",
+        "count": 1
+    }
+}

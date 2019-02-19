@@ -1,0 +1,35 @@
+{
+    "type": "minecraft:crafting_shaped",
+    
+    "pattern":
+    [
+        " R ",
+        "CMC",
+        "CMC"      
+    ],
+    
+    "key":
+    {
+        "M":
+        {
+            "type": "forge:ore_dict",
+            "ore": "ingotMagnetite"
+        },
+        "R":
+        {
+            "type": "forge:ore_dict",
+            "ore": "rotor"
+        },
+        "C":
+        {
+            "type": "forge:ore_dict",
+            "ore": "wireCopper"
+        }
+    },
+    
+    "result":
+    {
+        "item": "escm:generator",
+        "count": 1
+    }
+}
