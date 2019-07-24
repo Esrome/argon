@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    
+    "pattern":
+    [
+        "M" 
+    ],
+    
+    "key":
+    {
+        "M":
+        {
+            "item": "argon:lead_ingot"
+        }
+    },
+    
+    "result":
+    {
+        "item": "argon:lead_nugget",
+        "count": 9
+    }
+}

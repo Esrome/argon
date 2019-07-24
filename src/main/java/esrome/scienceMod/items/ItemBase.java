@@ -1,6 +1,6 @@
 package esrome.scienceMod.items;
 
-import esrome.scienceMod.ScienceMod;
+import esrome.scienceMod.Argon;
 import esrome.scienceMod.init.ModItems;
 import esrome.scienceMod.util.IHasModel;
 import net.minecraft.creativetab.CreativeTabs;
@@ -18,7 +18,7 @@ public class ItemBase extends Item implements IHasModel {
 	
 	@Override
 	public void registerModels() {
-		ScienceMod.proxy.registerItemRenderer(this, 0, "inventory");
+		Argon.proxy.registerItemRenderer(this, 0, "inventory");
 	}
 	
 }

@@ -2,7 +2,7 @@ package esrome.scienceMod.blocks.machines;
 
 import java.util.List;
 
-import esrome.scienceMod.ScienceMod;
+import esrome.scienceMod.Argon;
 import esrome.scienceMod.init.ModBlocks;
 import esrome.scienceMod.init.ModItems;
 import esrome.scienceMod.util.IHasModel;
@@ -30,7 +30,7 @@ public class BlockCrucible extends Block implements IHasModel {
 		setHardness(3.0f);
 		setHarvestLevel("pickaxe", 0);
 		setSoundType(SoundType.STONE);
-		setCreativeTab(ScienceMod.TAB);
+		setCreativeTab(Argon.TAB);
 		
 		ModBlocks.BLOCKS.add(this);
 		ModItems.ITEMS.add(new ItemBlock(this).setRegistryName(this.getRegistryName()).setMaxStackSize(1));
@@ -73,7 +73,7 @@ public class BlockCrucible extends Block implements IHasModel {
 
 	@Override
 	public void registerModels() {
-		ScienceMod.proxy.registerItemRenderer(Item.getItemFromBlock(this), 0, "inventory");
+		Argon.proxy.registerItemRenderer(Item.getItemFromBlock(this), 0, "inventory");
 	}
 
 }

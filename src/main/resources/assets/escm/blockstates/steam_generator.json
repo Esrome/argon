@@ -1,9 +1,0 @@
-{
-    "variants": 
-    {
-        "facing=north": { "model": "escm:steam_generator" },
-        "facing=east": { "model": "escm:steam_generator", "y": 90 },
-        "facing=south": { "model": "escm:steam_generator", "y": 180 },
-        "facing=west": { "model": "escm:steam_generator", "y": 270 }
-    }
-}

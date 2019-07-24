@@ -1,0 +1,24 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "copper_ingot",
+    
+    "pattern":
+    [
+        "M" 
+    ],
+    
+    "key":
+    {
+        "M":
+        {
+            "type": "forge:ore_dict",
+            "ore": "blockCopper"
+        }
+    },
+    
+    "result":
+    {
+        "item": "argon:copper_ingot",
+        "count": 9
+    }
+}

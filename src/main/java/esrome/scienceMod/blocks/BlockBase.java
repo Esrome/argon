@@ -1,6 +1,6 @@
 package esrome.scienceMod.blocks;
 
-import esrome.scienceMod.ScienceMod;
+import esrome.scienceMod.Argon;
 import esrome.scienceMod.init.ModBlocks;
 import esrome.scienceMod.init.ModItems;
 import esrome.scienceMod.util.IHasModel;
@@ -35,7 +35,7 @@ public class BlockBase extends Block implements IHasModel {
 	@Override
 	public void registerModels() 
 	{
-		ScienceMod.proxy.registerItemRenderer(Item.getItemFromBlock(this), 0, "inventory");
+		Argon.proxy.registerItemRenderer(Item.getItemFromBlock(this), 0, "inventory");
 	}
 	
 }

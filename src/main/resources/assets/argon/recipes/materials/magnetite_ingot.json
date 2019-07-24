@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    
+    "pattern":
+    [
+        "M" 
+    ],
+    
+    "key":
+    {
+        "M":
+        {
+            "item": "argon:magnetite_block"
+        }
+    },
+    
+    "result":
+    {
+        "item": "argon:magnetite_ingot",
+        "count": 9
+    }
+}

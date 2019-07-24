@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    
+    "pattern":
+    [
+        "CCC"    
+    ],
+    
+    "key":
+    {
+        "C":
+        {
+            "item": "argon:copper_ingot"
+        }
+    },
+    
+    "result":
+    {
+        "item": "argon:copper_wire",
+        "count": 6
+    }
+}

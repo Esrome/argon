@@ -1,0 +1,30 @@
+{
+    "type": "minecraft:crafting_shaped",
+    
+    "pattern":
+    [
+        "MMM",
+        "MCM",
+        "MMM"      
+    ],
+    
+    "key":
+    {
+        "M":
+        {
+            "type": "forge:ore_dict",
+            "ore": "blockIron"
+        },
+        "C":
+        {
+            "type": "forge:ore_dict",
+            "ore": "crucible"
+        }
+    },
+    
+    "result":
+    {
+        "item": "argon:crystalizer",
+        "count": 1
+    }
+}

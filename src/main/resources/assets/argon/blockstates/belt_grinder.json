@@ -1,0 +1,19 @@
+{
+   "multipart": [
+       {   "when": { "OR": [
+               { "facing": "north" },
+               { "facing": "south" }
+           ]},
+           "apply": { "model": "argon:belt_grinder", "y": 90 }
+       },
+       {   "when": { "OR": [
+               { "facing": "west" },
+               { "facing": "east" }
+           ]},
+           "apply": { "model": "argon:belt_grinder" }
+       },
+       {   "when": { "up": "true" },
+           "apply": { "model": "argon:cable_u" }
+       }
+   ]
+}

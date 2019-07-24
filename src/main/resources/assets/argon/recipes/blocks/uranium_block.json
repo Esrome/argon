@@ -1,0 +1,24 @@
+{
+    "type": "minecraft:crafting_shaped",
+    
+    "pattern":
+    [
+        "MMM",
+        "MMM",
+        "MMM"    
+    ],
+    
+    "key":
+    {
+        "M":
+        {
+            "item": "argon:uranium_ingot"
+        }
+    },
+    
+    "result":
+    {
+        "item": "argon:uranium_block",
+        "count": 1
+    }
+}

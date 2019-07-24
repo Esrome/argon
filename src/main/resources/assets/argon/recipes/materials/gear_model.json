@@ -1,0 +1,25 @@
+{
+    "type": "minecraft:crafting_shaped",
+    
+    "pattern":
+    [
+        " S ",
+        "S S",
+        " S "
+    ],
+    
+    "key":
+    {
+        "S":
+        {
+            "type": "forge:ore_dict",
+            "ore": "stick"
+        }
+    },
+    
+    "result":
+    {
+        "item": "argon:gear_model",
+        "count": 1
+    }
+}

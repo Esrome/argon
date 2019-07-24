@@ -3,7 +3,7 @@ package esrome.scienceMod.blocks.machines;
 import java.util.List;
 import java.util.Random;
 
-import esrome.scienceMod.ScienceMod;
+import esrome.scienceMod.Argon;
 import esrome.scienceMod.init.ModBlocks;
 import esrome.scienceMod.init.ModItems;
 import esrome.scienceMod.tileentity.TileEntityBeltGrinder;
@@ -46,7 +46,7 @@ public class BlockBeltGrinder extends Block implements IHasModel {
 		setHardness(3.0f);
 		setSoundType(SoundType.METAL);
 		setHarvestLevel("pickaxe", 0);
-		setCreativeTab(ScienceMod.TAB);
+		setCreativeTab(Argon.TAB);
 		setDefaultState(this.getStateFromMeta(0).withProperty(UP, false));
 		
 		ModBlocks.BLOCKS.add(this);
@@ -76,7 +76,7 @@ public class BlockBeltGrinder extends Block implements IHasModel {
 	@Override
 	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn,EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
 		if(!worldIn.isRemote) {
-			playerIn.openGui(ScienceMod.instance, Reference.GUI_BELT_GRINDER, worldIn, pos.getX(), pos.getY(), pos.getZ());
+			playerIn.openGui(Argon.instance, Reference.GUI_BELT_GRINDER, worldIn, pos.getX(), pos.getY(), pos.getZ());
 		}
 		return true;
 	}
@@ -136,7 +136,7 @@ public class BlockBeltGrinder extends Block implements IHasModel {
 
 	@Override
 	public void registerModels() {
-		ScienceMod.proxy.registerItemRenderer(Item.getItemFromBlock(this), 0, "inventory");
+		Argon.proxy.registerItemRenderer(Item.getItemFromBlock(this), 0, "inventory");
 	}
 	
 }

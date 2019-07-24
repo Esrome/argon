@@ -1,0 +1,9 @@
+{
+    "variants": 
+    {
+        "facing=north": { "model": "argon:crystalizer" },
+        "facing=east": { "model": "argon:crystalizer", "y": 90 },
+        "facing=south": { "model": "argon:crystalizer", "y": 180 },
+        "facing=west": { "model": "argon:crystalizer", "y": 270 }
+    }
+}

@@ -2,7 +2,7 @@ package esrome.scienceMod.blocks.energy;
 
 import java.util.Random;
 
-import esrome.scienceMod.ScienceMod;
+import esrome.scienceMod.Argon;
 import esrome.scienceMod.blocks.BlockBase;
 import esrome.scienceMod.init.ModBlocks;
 import esrome.scienceMod.tileentity.TileEntityTransmitterTower;
@@ -46,7 +46,7 @@ public class BlockTransmitterTowerSupport extends BlockBase {
     protected static final AxisAlignedBB AABB_NS = new AxisAlignedBB(0.4375D, 0.4375D, 0.0D, 0.5625D, 0.75D, 1.0D);
     
 	public BlockTransmitterTowerSupport(String name) {
-		super(name, Material.IRON, 3.0f, -1, SoundType.METAL, ScienceMod.TAB);
+		super(name, Material.IRON, 3.0f, -1, SoundType.METAL, Argon.TAB);
 		setDefaultState(this.getStateFromMeta(0).withProperty(N, false).withProperty(E, false).withProperty(S, false).withProperty(W, false));
 	}
 	
@@ -130,7 +130,7 @@ public class BlockTransmitterTowerSupport extends BlockBase {
 	@Override
 	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn,EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
 		if(!worldIn.isRemote) {
-			playerIn.openGui(ScienceMod.instance, Reference.GUI_TRANSMITTER_TOWER, worldIn, pos.getX(), pos.getY(), pos.getZ());
+			playerIn.openGui(Argon.instance, Reference.GUI_TRANSMITTER_TOWER, worldIn, pos.getX(), pos.getY(), pos.getZ());
 		}
 		return true;
 	}

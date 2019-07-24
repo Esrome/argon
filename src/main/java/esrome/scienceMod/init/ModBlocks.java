@@ -3,7 +3,7 @@ package esrome.scienceMod.init;
 import java.util.ArrayList;
 import java.util.List;
 
-import esrome.scienceMod.ScienceMod;
+import esrome.scienceMod.Argon;
 import esrome.scienceMod.blocks.BlockBase;
 import esrome.scienceMod.blocks.BlockFluid;
 import esrome.scienceMod.blocks.energy.BlockTransmitterTowerBase;
@@ -36,22 +36,22 @@ public class ModBlocks {
 	public static final Block TRANSMITTER_TOWER_BASE = new BlockTransmitterTowerBase("transmitter_tower_base");
 	public static final Block TRANSMITTER_TOWER_SUPPORT = new BlockTransmitterTowerSupport("transmitter_tower_support");
 		//cables
-	public static final Item COPPER_WIRE = new ItemBase("copper_wire", ScienceMod.TAB);
+	public static final Item COPPER_WIRE = new ItemBase("copper_wire", Argon.TAB);
 	
-	public static final Block URANIUM_ORE = new BlockBase("uranium_ore", Material.ROCK, 3.0f, 2, SoundType.STONE, ScienceMod.TAB);	
-	public static final Block RADIUM_ORE = new BlockBase("radium_ore", Material.ROCK, 3.0f, 2, SoundType.STONE, ScienceMod.TAB);	
-	public static final Block MAGNETITE_ORE = new BlockBase("magnetite_ore", Material.ROCK, 3.0f, 1, SoundType.STONE, ScienceMod.TAB);
+	public static final Block URANIUM_ORE = new BlockBase("uranium_ore", Material.ROCK, 3.0f, 2, SoundType.STONE, Argon.TAB);	
+	public static final Block RADIUM_ORE = new BlockBase("radium_ore", Material.ROCK, 3.0f, 2, SoundType.STONE, Argon.TAB);	
+	public static final Block MAGNETITE_ORE = new BlockBase("magnetite_ore", Material.ROCK, 3.0f, 1, SoundType.STONE, Argon.TAB);
 	
-	public static final Block URANIUM_BLOCK = new BlockBase("uranium_block", Material.IRON, 3.0f, 2, SoundType.METAL, ScienceMod.TAB);
-	public static final Block RADIUM_BLOCK = new BlockBase("radium_block", Material.IRON, 3.0f, 2, SoundType.METAL, ScienceMod.TAB);
-	public static final Block MAGNETITE_BLOCK = new BlockBase("magnetite_block", Material.IRON, 3.0f, 1, SoundType.METAL, ScienceMod.TAB);
+	public static final Block URANIUM_BLOCK = new BlockBase("uranium_block", Material.IRON, 3.0f, 2, SoundType.METAL, Argon.TAB);
+	public static final Block RADIUM_BLOCK = new BlockBase("radium_block", Material.IRON, 3.0f, 2, SoundType.METAL, Argon.TAB);
+	public static final Block MAGNETITE_BLOCK = new BlockBase("magnetite_block", Material.IRON, 3.0f, 1, SoundType.METAL, Argon.TAB);
 	
 	//Implementations of blocks from Minecraft Chocolate
-	public static final Block COPPER_ORE = new BlockBase("copper_ore", Material.ROCK, 1.6f, 1, SoundType.STONE, ScienceMod.TAB);
-	public static final Block LEAD_ORE = new BlockBase("lead_ore", Material.ROCK, 1.6f, 1, SoundType.STONE, ScienceMod.TAB);
+	public static final Block COPPER_ORE = new BlockBase("copper_ore", Material.ROCK, 1.6f, 1, SoundType.STONE, Argon.TAB);
+	public static final Block LEAD_ORE = new BlockBase("lead_ore", Material.ROCK, 1.6f, 1, SoundType.STONE, Argon.TAB);
 	
-	public static final Block COPPER_BLOCK = new BlockBase("copper_block", Material.IRON, 3.0F, 0, SoundType.METAL, ScienceMod.TAB);
-	public static final Block LEAD_BLOCK = new BlockBase("lead_block", Material.IRON, 5.0F, 0, SoundType.METAL, ScienceMod.TAB);
+	public static final Block COPPER_BLOCK = new BlockBase("copper_block", Material.IRON, 3.0F, 0, SoundType.METAL, Argon.TAB);
+	public static final Block LEAD_BLOCK = new BlockBase("lead_block", Material.IRON, 5.0F, 0, SoundType.METAL, Argon.TAB);
 	
 	
 	//Fluids

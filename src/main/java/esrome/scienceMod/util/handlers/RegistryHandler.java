@@ -1,6 +1,6 @@
 package esrome.scienceMod.util.handlers;
 
-import esrome.scienceMod.ScienceMod;
+import esrome.scienceMod.Argon;
 import esrome.scienceMod.init.ModBlocks;
 import esrome.scienceMod.init.ModFluids;
 import esrome.scienceMod.init.ModItems;
@@ -60,12 +60,10 @@ public class RegistryHandler {
 		GameRegistry.registerWorldGenerator(new WorldGenMetalOres(), 0);
 		
 		RenderHandler.registerCustomMeshesAndStates();
-
-		OreDictionaryCompatibility.registerOres();
 	}
 	
 	public static void init() {
-		NetworkRegistry.INSTANCE.registerGuiHandler(ScienceMod.instance, new GuiHandler());
+		NetworkRegistry.INSTANCE.registerGuiHandler(Argon.instance, new GuiHandler());
 		SmeltingHandler.registerRecipes();
 	}
 	

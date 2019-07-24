@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+    
+    "pattern":
+    [
+        "M" 
+    ],
+    
+    "key":
+    {
+        "M":
+        {
+            "item": "argon:radium_block"
+        }
+    },
+    
+    "result":
+    {
+        "item": "argon:radium_ingot",
+        "count": 9
+    }
+}

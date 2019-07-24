@@ -3,7 +3,7 @@ package esrome.scienceMod.blocks.machines;
 import java.util.List;
 import java.util.Random;
 
-import esrome.scienceMod.ScienceMod;
+import esrome.scienceMod.Argon;
 import esrome.scienceMod.init.ModBlocks;
 import esrome.scienceMod.init.ModItems;
 import esrome.scienceMod.tileentity.TileEntityFabricator;
@@ -46,7 +46,7 @@ public class BlockFabricator extends Block {
 		setRegistryName(name);
 		setHardness(3.0f);
 		setSoundType(SoundType.METAL);
-		setCreativeTab(ScienceMod.TAB);
+		setCreativeTab(Argon.TAB);
 		setDefaultState(this.getStateFromMeta(0));
 		
 		ModBlocks.BLOCKS.add(this);
@@ -101,7 +101,7 @@ public class BlockFabricator extends Block {
 	@Override
 	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn,EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
 		if(!worldIn.isRemote) {
-			playerIn.openGui(ScienceMod.instance, Reference.GUI_FABRICATOR, worldIn, pos.getX(), pos.getY(), pos.getZ());
+			playerIn.openGui(Argon.instance, Reference.GUI_FABRICATOR, worldIn, pos.getX(), pos.getY(), pos.getZ());
 		}
 		return true;
 	}

@@ -1,6 +1,6 @@
 package esrome.scienceMod.items;
 
-import esrome.scienceMod.ScienceMod;
+import esrome.scienceMod.Argon;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumActionResult;
@@ -18,7 +18,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class ItemEnergyReader extends ItemBase {
 
 	public ItemEnergyReader(String name) {
-		super(name, ScienceMod.TAB);
+		super(name, Argon.TAB);
 		setMaxStackSize(1);
 	}
 	

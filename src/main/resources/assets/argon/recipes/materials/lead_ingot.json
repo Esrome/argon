@@ -1,0 +1,23 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "lead_ingot",
+    
+    "pattern":
+    [
+        "M" 
+    ],
+    
+    "key":
+    {
+        "M":
+        {
+            "item": "argon:lead_block"
+        }
+    },
+    
+    "result":
+    {
+        "item": "argon:lead_ingot",
+        "count": 9
+    }
+}

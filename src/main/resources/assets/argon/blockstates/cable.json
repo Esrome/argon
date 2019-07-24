@@ -1,0 +1,63 @@
+{
+  "forge_marker" : 1,
+  "defaults" : {
+    "textures" : {
+      "texture" : "argon:blocks/cable"
+    },
+    "model" : "argon:cable",
+    "uvlock" : true
+  },
+  "variants" : {
+    "normal" : {
+      "model" : "argon:cable"
+    },
+    "u" : {
+      "true" : {
+        "submodel": "argon:cable_u"
+      },
+      "false" : {
+
+      }
+    },
+    "d" : {
+      "true" : {
+        "submodel": "argon:cable_d"
+      },
+      "false" : {
+
+      }
+    },
+    "n" : {
+      "true" : {
+        "submodel": "argon:cable_n"
+      },
+      "false" : {
+
+      }
+    },
+    "s" : {
+      "true" : {
+        "submodel": "argon:cable_s"
+      },
+      "false" : {
+
+      }
+    },
+    "w" : {
+      "true" : {
+        "submodel": "argon:cable_w"
+      },
+      "false" : {
+
+      }
+    },
+    "e" : {
+      "true" : {
+        "submodel": "argon:cable_e"
+      },
+      "false" : {
+
+      }
+    }
+  }
+}

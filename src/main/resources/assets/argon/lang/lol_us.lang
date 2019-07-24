@@ -1,0 +1,72 @@
+container.steam_generator=Magic Trickury Masheen
+container.crystalizer=Fanceh Makur
+container.transmitter_tower=Electrik Towur
+container.belt_grinder=Belt Smashur
+container.fabricator.name=Maeky Ting
+
+translation.energy=Electriks
+translation.energy_reader_fail=No Electriks
+
+item.radium_ingot.name=Danger Mineruhl Ingoht
+item.uranium_ingot.name=Big Boom Ingoht
+item.lead_ingot.name=Led Ingut
+item.lead_nugget.name=Led Bit
+item.copper_ingot.name=Zappy Ingut
+item.copper_nugget.name=Zappy Bit
+item.lead_dust.name=Led Powdur
+item.energy_reader.name=Electriks Tellur
+item.iron_dust.name=Irun Powdur
+item.silica.name=Kwartz Dust
+item.silicone.name=Thing Liek Kwartz
+item.sulfur.nam=Smelly Eg Stuf
+item.crystalline_silicone.name=Shineh Stuf
+item.lead_plate.name=Led Pece
+item.rubber_separator.name=Ruber Betwene Bit Thing
+item.silicon.name=Silly Cone
+item.crystalline_silicon.name=Shineh Silly Cone
+item.lead_gear.name=Led Spinny Ting
+item.copper_gear.name=Co-purr Spinny Ting
+item.iron_gear.name=Irun Spinny Ting
+item.gold_gear.name=Guld Spinny Ting
+item.gear_model.name=Spinny Ting Modul
+item.copper_wire.name=Co-purr Electriks Holdur
+item.generator.name=Electriks Makur
+item.rotor.name=Areplane Ting
+item.magnetite_ingot.name=Pully Ingut
+item.empty_blueprint.name=Tellz U What To Do
+item.gear_blueprint.name=Maek a Spinny Ting
+item.iron_plate.name=Irun Pece
+item.gold_dust.name=GOLD Powdur
+item.copper_dust.name=Electriks Metul Powdur
+item.silicon_wafer.name=Silly Cone Snak
+
+tile.radium_ore.name=Rokz Wif Danger Mineruhl
+tile.radium_block.name=Danger Mineruhl Bluk
+tile.uranium_ore.name=Rokz Wif Big Boom
+tile.uranium_block.name=Big Boom Bluk
+tile.crucible.name=Crucibit
+tile.lead_ore.name=Rockz Wif Led
+tile.lead_block.name=Led Bluk
+tile.copper_ore.name=Rockz Wif Zappy Metal
+tile.copper_block.name=Zappy Bluk
+tile.steam_generator.name=Maek Watur Gone
+tile.transmitter_tower_base.name=Electrik Towur Barz
+tile.transmitter_tower_support.name=Electrik Towur Storer
+tile.cable.name=Wiar
+tile.belt_grinder.name=Belt Smashur
+tile.fabricator.name=Maeky Ting
+tile.magnetite_ore.name=Rokz Wif Pully Metul
+tile.magnetite_block.name=Pully Blok
+
+fluid.mercury=Ouch Metul
+fluid.hot_water=Almohst Ouch Watur
+
+effect.radiation=Gren Stufed
+effect.mercury_burn=Ouch Metaled
+
+death.attack.argon.mercury_burn=%1$s died of ouch metal.
+death.attack.argon.mercury_burn.player=%1$s was ouch metaled by %2$s.
+death.attack.argon.radiation=%1$s died of radz.
+death.attack.argon.radiation.player=%1$s was radded by %2$.
+
+itemGroup.argon=Esrome's Siensy Bits

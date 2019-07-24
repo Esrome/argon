@@ -1,0 +1,31 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "group": "belt_grinder",
+    
+    "pattern":
+    [
+        "MMM",
+        "GGG",
+        "MMM"      
+    ],
+    
+    "key":
+    {
+        "M":
+        {
+            "type": "forge:ore_dict",
+            "ore": "plateIron"
+        },
+        "G":
+        {
+            "type": "forge:ore_dict",
+            "ore": "gearIron"
+        }
+    },
+    
+    "result":
+    {
+        "item": "argon:belt_grinder",
+        "count": 1
+    }
+}

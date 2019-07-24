@@ -1,0 +1,9 @@
+{
+    "variants": 
+    {
+        "facing=north": { "model": "argon:steam_generator" },
+        "facing=east": { "model": "argon:steam_generator", "y": 90 },
+        "facing=south": { "model": "argon:steam_generator", "y": 180 },
+        "facing=west": { "model": "argon:steam_generator", "y": 270 }
+    }
+}
