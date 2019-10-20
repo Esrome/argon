@@ -12,7 +12,8 @@
     {
         "M":
         {
-            "item": "argon:uranium_ingot"
+            "type": "forge:ore_dict",
+            "ore": "ingotUranium"
         }
     },
     

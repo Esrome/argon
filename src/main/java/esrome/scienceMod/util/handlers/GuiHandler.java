@@ -2,17 +2,14 @@ package esrome.scienceMod.util.handlers;
 
 import esrome.scienceMod.blocks.containers.ContainerBeltGrinder;
 import esrome.scienceMod.blocks.containers.ContainerCrystalizer;
-import esrome.scienceMod.blocks.containers.ContainerFabricator;
 import esrome.scienceMod.blocks.containers.ContainerSteamGenerator;
 import esrome.scienceMod.blocks.containers.ContainerTransmitterTower;
 import esrome.scienceMod.gui.GuiBeltGrinder;
 import esrome.scienceMod.gui.GuiCrystalizer;
-import esrome.scienceMod.gui.GuiFabricator;
 import esrome.scienceMod.gui.GuiSteamGenerator;
 import esrome.scienceMod.gui.GuiTransmitterTower;
 import esrome.scienceMod.tileentity.TileEntityBeltGrinder;
 import esrome.scienceMod.tileentity.TileEntityCrystalizer;
-import esrome.scienceMod.tileentity.TileEntityFabricator;
 import esrome.scienceMod.tileentity.TileEntitySteamGenerator;
 import esrome.scienceMod.tileentity.TileEntityTransmitterTower;
 import esrome.scienceMod.util.Reference;
@@ -29,7 +26,6 @@ public class GuiHandler implements IGuiHandler {
 		if(ID == Reference.GUI_CRYSTALIZER) return new ContainerCrystalizer(player.inventory, (TileEntityCrystalizer)world.getTileEntity(new BlockPos(x,y,z)));
 		if(ID == Reference.GUI_TRANSMITTER_TOWER) return new ContainerTransmitterTower(player.inventory, (TileEntityTransmitterTower)world.getTileEntity(new BlockPos(x,y,z)));
 		if(ID == Reference.GUI_BELT_GRINDER) return new ContainerBeltGrinder(player.inventory, (TileEntityBeltGrinder)world.getTileEntity(new BlockPos(x,y,z)));
-		if(ID == Reference.GUI_FABRICATOR) return new ContainerFabricator(player.inventory, (TileEntityFabricator)world.getTileEntity(new BlockPos(x,y,z)));
 		return null;
 	}
 
@@ -39,7 +35,6 @@ public class GuiHandler implements IGuiHandler {
 		if(ID == Reference.GUI_CRYSTALIZER) return new GuiCrystalizer(player.inventory, (TileEntityCrystalizer)world.getTileEntity(new BlockPos(x,y,z)));
 		if(ID == Reference.GUI_TRANSMITTER_TOWER) return new GuiTransmitterTower(player.inventory, (TileEntityTransmitterTower)world.getTileEntity(new BlockPos(x,y,z)));
 		if(ID == Reference.GUI_BELT_GRINDER) return new GuiBeltGrinder(player.inventory, (TileEntityBeltGrinder)world.getTileEntity(new BlockPos(x,y,z)));
-		if(ID == Reference.GUI_FABRICATOR) return new GuiFabricator(player.inventory, (TileEntityFabricator)world.getTileEntity(new BlockPos(x,y,z)));
 		return null;
 	}
 

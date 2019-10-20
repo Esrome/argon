@@ -63,9 +63,6 @@ public class GuiSteamGenerator extends GuiContainer {
 	
 	private int getHeatRemaining(int pixels) {
 		int i = this.tileentity.fuelTime;
-		if(i == 0) {
-			return 0;
-		}
 		int j = this.tileentity.maxFuelTime;
 		return i != 0 ? i * pixels / j : 0;
 	}
@@ -73,21 +70,13 @@ public class GuiSteamGenerator extends GuiContainer {
 	private int getSteamStoredScaled(int pixels){
 		int i = this.tileentity.steam;
 		int j = this.tileentity.maxSteam;
-		if(i==j) {
-			return pixels;
-		}
 		return i != 0 && j != 0 ? i * pixels / j : 0; 
 	}
 	
 	private int getCookProgressScaled(int pixels){
 		int i = this.tileentity.cookTime;
-		if(i==25) {
-			return pixels;
-		}
-		if(i==0) {
-			return 0;
-		}
-		return i != 0 ? i * pixels / 25 : 0;
+		int j = this.tileentity.maxCookTime;
+		return i != 0 ? i * pixels / j: 0;
 	}
 	
 }

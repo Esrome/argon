@@ -77,7 +77,7 @@ public class BlockTransmitterTowerSupport extends BlockBase {
 			worldIn.setBlockState(pos, state.withProperty(STRAIGHT, true));
 			return;
 		}
-		if(state2.getBlock()==ModBlocks.TRANSMITTER_TOWER_BASE) {
+		if(state2.getBlock()==ModBlocks.TRANSMITTER_TOWER_SUPPORT) {
 			if(state2.getValue(FACING).getAxis()==state.getValue(FACING).getAxis()) {
 				worldIn.setBlockState(pos, state.withProperty(STRAIGHT, true));
 				return;

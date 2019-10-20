@@ -133,39 +133,36 @@ public class TileEntityBeltGrinder extends TileEntity implements ITickable {
 		if(worldFacing!=facing) {
 			this.facing=worldFacing;
 		}
+		
 		ItemStack stack = handler.getStackInSlot(0);
 		ItemStack[] output = RecipesBeltGrinder.getInstance().getGrinderRecipe(stack);
 		if(energy>=3 && handler!=null) {
-			if(handler!=null && output!=null)if(output[0]!=ItemStack.EMPTY && handler.getStackInSlot(1).getCount()<=64-output[0].getCount() && (output[0].isItemEqual(handler.getStackInSlot(1))||handler.getStackInSlot(1).getCount()==0) &&
-					handler.getStackInSlot(2).getCount()<=64-output[1].getCount() && (output[1].isItemEqual(handler.getStackInSlot(2))||handler.getStackInSlot(2).getCount()==0) &&
-					handler.getStackInSlot(3).getCount()<=64-output[2].getCount() && (output[2].isItemEqual(handler.getStackInSlot(3))||handler.getStackInSlot(3).getCount()==0)){
+			if(handler!=null && output!=null)
+				if(handler.getStackInSlot(1).getCount()<=64-output[0].getCount() && (output[0].isItemEqual(handler.getStackInSlot(1))||handler.getStackInSlot(1).isEmpty()) &&
+					handler.getStackInSlot(2).getCount()<=64-output[1].getCount() && (output[1].isItemEqual(handler.getStackInSlot(2))||handler.getStackInSlot(2).isEmpty()) &&
+					handler.getStackInSlot(3).getCount()<=64-output[2].getCount() && (output[2].isItemEqual(handler.getStackInSlot(3))||handler.getStackInSlot(3).isEmpty())){
 				currentBurnTime++;
 				energy-=3;
 				if(currentBurnTime==burnTime) {
 					currentBurnTime=0;
-					if(handler.getStackInSlot(1).isItemEqual(output[0])) {
-						handler.getStackInSlot(1).grow(1);
-					}else {
-						handler.setStackInSlot(1, output[0]);
-					}
-					if(handler.getStackInSlot(2).isItemEqual(output[1])) {
-						handler.getStackInSlot(2).grow(1);
-					}else {
-						handler.setStackInSlot(2, output[1]);
-					}
-					if(handler.getStackInSlot(3).isItemEqual(output[2])) {
-						handler.getStackInSlot(3).grow(1);
-					}else {
-						handler.setStackInSlot(3, output[2]);
-					}
+					if(handler.getStackInSlot(1).isEmpty()) 
+						handler.setStackInSlot(1, output[0].copy());
+					else handler.getStackInSlot(1).grow(output[0].getCount());
+					
+					if(handler.getStackInSlot(2).isEmpty())
+						handler.setStackInSlot(2, output[1].copy());
+					else handler.getStackInSlot(2).grow(output[1].getCount());
+					
+					if(handler.getStackInSlot(3).isEmpty())
+						handler.setStackInSlot(3, output[2].copy());
+					else handler.getStackInSlot(3).grow(output[2].getCount());
+					
 					handler.getStackInSlot(0).shrink(1);
 				}
-			}else if(currentBurnTime>0) {
-				currentBurnTime--;
-			}
-		}else if(currentBurnTime>0) {
-			currentBurnTime--;
-		}
+			}else if(currentBurnTime>0) currentBurnTime--;
+		}else if(currentBurnTime>0) currentBurnTime--;
+		if(output==null) currentBurnTime=0;
+		
 		storage.setEnergy(energy);
 		if(up!=prevUp) {
 			prevUp = up;

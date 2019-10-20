@@ -24,6 +24,7 @@ public class TileEntitySteamGenerator extends TileEntity implements ITickable{
 	private ElectricityStorage storage = new ElectricityStorage(2000, 100);
 	private String customName;
 	public int cookTime;
+	public int maxCookTime;
 	public int energy = storage.getEnergyStored();
 	public int maxEnergy = storage.getMaxEnergyStored();
 	public int steam = 0;

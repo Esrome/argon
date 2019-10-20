@@ -4,10 +4,8 @@ import java.util.IllegalFormatException;
 
 import esrome.scienceMod.blocks.containers.ContainerBeltGrinder;
 import esrome.scienceMod.blocks.containers.ContainerCrystalizer;
-import esrome.scienceMod.blocks.containers.ContainerFabricator;
 import esrome.scienceMod.gui.GuiBeltGrinder;
 import esrome.scienceMod.gui.GuiCrystalizer;
-import esrome.scienceMod.gui.GuiFabricator;
 import esrome.scienceMod.util.compatibility.jei.belt_grinder.BeltGrinderRecipeCategory;
 import esrome.scienceMod.util.compatibility.jei.belt_grinder.BeltGrinderRecipeMaker;
 import esrome.scienceMod.util.compatibility.jei.crystalizer.CrystalizerRecipeCategory;
@@ -51,11 +49,9 @@ public class JEICompat implements IModPlugin {
 		
 		registry.addRecipeClickArea(GuiCrystalizer.class, 64, 37, 18, 18, RecipeCategories.CRYSTALIZER);
 		registry.addRecipeClickArea(GuiBeltGrinder.class, 116, 3, 31, 80, RecipeCategories.BELT_GRINDER);
-		registry.addRecipeClickArea(GuiFabricator.class, 116, 3, 31, 80, RecipeCategories.FABRICATOR);
 		
 		recipeTransfer.addRecipeTransferHandler(ContainerCrystalizer.class, RecipeCategories.CRYSTALIZER, 0, 1, 3, 36);
 		recipeTransfer.addRecipeTransferHandler(ContainerBeltGrinder.class, RecipeCategories.BELT_GRINDER, 0, 0, 4, 36);
-		recipeTransfer.addRecipeTransferHandler(ContainerFabricator.class, RecipeCategories.FABRICATOR, 0, 2, 4, 36);
 	}
 	
 	public static String translateToLocal(String key) {

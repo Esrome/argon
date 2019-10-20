@@ -1,8 +1,7 @@
 container.steam_generator=Steam Generator
-container.crystalizer=Crystallizer
+container.crystalizer=Crystalizer
 container.transmitter_tower=Transmitter Tower
 container.belt_grinder=Belt Grinder
-container.fabricator=Fabricator
 
 translation.energy=Energy
 translation.energy_reader_fail=Object has no energy.
@@ -14,7 +13,7 @@ item.copper_nugget.name=Copper Nugget
 item.lead_ingot.name=Lead Ingot
 item.lead_nugget.name=Lead Nugget
 item.lead_dust.name=Lead Dust
-item.energy_reader.name=Energy Reader
+item.energy_reader.name=Multimeter
 item.iron_dust.name=Iron Dust
 item.salt.name=Salt
 item.silica.name=Silica
@@ -51,7 +50,7 @@ tile.copper_block.name=Copper Block
 tile.lead_ore.name=Lead Ore
 tile.lead_block.name=Lead Block
 tile.steam_generator.name=Steam Generator
-tile.crystalizer.name=Crystallizer
+tile.crystalizer.name=Crystalizer
 tile.transmitter_tower_base.name=Transmitter Tower Base
 tile.transmitter_tower_support.name=Transmitter Tower Support
 tile.cable.name=Cable

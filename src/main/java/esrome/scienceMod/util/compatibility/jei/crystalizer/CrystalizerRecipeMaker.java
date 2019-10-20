@@ -17,18 +17,18 @@ public class CrystalizerRecipeMaker {
 	public static List<CrystalizerRecipe> getRecipes(IJeiHelpers helpers){
 		IStackHelper stackHelper = helpers.getStackHelper();
 		RecipesCrystalizer instance = RecipesCrystalizer.getInstance();
-		Table<ItemStack, ItemStack, ItemStack> recipes = instance.getDualSmeltingList();
+		List<ItemStack> input1 = instance.firstInputs();
+		List<ItemStack> input2 = instance.secondInputs();
+		List<ItemStack> outputs = instance.outputs();
 		List<CrystalizerRecipe> jeiRecipes = Lists.newArrayList();
 		
-		for(Entry<ItemStack, Map<ItemStack, ItemStack>> entry : recipes.columnMap().entrySet()) {
-			for(Entry<ItemStack, ItemStack> ent: entry.getValue().entrySet()) {
-				ItemStack input1 = entry.getKey();
-				ItemStack input2 = ent.getKey();
-				ItemStack output = ent.getValue();
-				List<ItemStack> inputs = Lists.newArrayList(input1, input2);
-				CrystalizerRecipe recipe = new CrystalizerRecipe(inputs, output);
-				jeiRecipes.add(recipe);
-			}
+		for(int i=0; i<input1.size(); i++) {
+			ItemStack item1 = input1.get(i);
+			ItemStack item2 = input2.get(i);
+			ItemStack output = outputs.get(i);
+			List<ItemStack> inputs = Lists.newArrayList(item1, item2);
+			CrystalizerRecipe recipe = new CrystalizerRecipe(inputs, output);
+			jeiRecipes.add(recipe);
 		}
 		return jeiRecipes;
 	}

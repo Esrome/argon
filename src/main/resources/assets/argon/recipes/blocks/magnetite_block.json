@@ -12,7 +12,8 @@
     {
         "M":
         {
-            "item": "argon:magnetite_ingot"
+            "type": "forge:ore_dict",
+            "ore": "ingotMagnetite"
         }
     },
     

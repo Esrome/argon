@@ -13,7 +13,8 @@
     {
         "M":
         {
-            "item": "argon:copper_nugget"
+            "type": "forge:ore_dict",
+            "ore": "nuggetCopper"
         }
     },
     

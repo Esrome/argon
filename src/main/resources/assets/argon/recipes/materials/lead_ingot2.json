@@ -13,7 +13,8 @@
     {
         "M":
         {
-            "item": "argon:lead_nugget"
+            "type": "forge:ore_dict",
+            "ore": "nuggetLead"
         }
     },
     

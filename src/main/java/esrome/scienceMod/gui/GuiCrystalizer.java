@@ -48,22 +48,15 @@ public class GuiCrystalizer extends GuiContainer {
 	private int getEnergyStoredScaled(int pixels){
 		int i = this.tileentity.getEnergyStored();
 		int j = this.tileentity.getMaxEnergyStored();
-		if(i==j) {
-			return i;
-		}
+		if(i==j) return pixels;
 		return i != 0 && j != 0 ? i * pixels / j : 0; 
 	}
 	
 	private int getCookProgressScaled(int pixels){
 		int i = this.tileentity.currentBurnTime;
 		int j = this.tileentity.burnTime;
-		if(i==25) {
-			return pixels;
-		}
-		if(i==0) {
-			return 0;
-		}
-		return i != 0 ? i * pixels / j : 0;
+		if(i==j) return pixels;
+		return i != 0 && j != 0 ? i * pixels / j : 0;
 	}
 	
 }

@@ -65,16 +65,15 @@ public class ContainerBeltGrinder extends Container {
 				ItemStack stack1 = slot.getStack();
 				stack = stack1.copy();
 				
-				if(index >= 0 && index < 27)
-				{
-					if(!this.mergeItemStack(stack1, 27, 36, false)) return ItemStack.EMPTY;
-				}
-				else if(index >= 27 && index < 36)
-				{
-					if(!this.mergeItemStack(stack1, 0, 27, false)) return ItemStack.EMPTY;
-				}
-				else if(!this.mergeItemStack(stack1, 0, 36, false))
-				{
+				if(index >=0 && index < 4) {
+					if(!this.mergeItemStack(stack1, 4, 40, true)) return ItemStack.EMPTY;
+				}if(index >= 4 && index < 31){
+					if(!this.mergeItemStack(stack1, 0, 1, false))
+						if(!this.mergeItemStack(stack1, 31, 40, false)) return ItemStack.EMPTY;
+				}else if(index >= 31 && index < 40){
+					if(!this.mergeItemStack(stack1, 0, 1, false))
+						if(!this.mergeItemStack(stack1, 4, 31, false)) return ItemStack.EMPTY;
+				}else if(!this.mergeItemStack(stack1, 0, 40, true)){
 					return ItemStack.EMPTY;
 				}
 				

@@ -58,16 +58,16 @@ public class ContainerCrystalizer extends Container {
 				ItemStack stack1 = slot.getStack();
 				stack = stack1.copy();
 				
-				if(index >= 0 && index < 27)
-				{
-					if(!this.mergeItemStack(stack1, 27, 36, false)) return ItemStack.EMPTY;
-				}
-				else if(index >= 27 && index < 36)
-				{
-					if(!this.mergeItemStack(stack1, 0, 27, false)) return ItemStack.EMPTY;
-				}
-				else if(!this.mergeItemStack(stack1, 0, 36, false))
-				{
+				if(index >= 0 && index < 3) {
+					if(!this.mergeItemStack(stack1, 30, 39, false))
+						if(!this.mergeItemStack(stack1, 3, 30, false)) return ItemStack.EMPTY;
+				}if(index >= 3 && index < 30){
+					if(!this.mergeItemStack(stack1, 0, 2, false))
+						if(!this.mergeItemStack(stack1, 30, 39, false)) return ItemStack.EMPTY;
+				}else if(index >= 30 && index < 39){
+					if(!this.mergeItemStack(stack1, 0, 2, false))
+						if(!this.mergeItemStack(stack1, 3, 30, false)) return ItemStack.EMPTY;
+				}else if(!this.mergeItemStack(stack1, 0, 39, false)){
 					return ItemStack.EMPTY;
 				}
 				

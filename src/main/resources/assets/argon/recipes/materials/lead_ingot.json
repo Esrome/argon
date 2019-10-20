@@ -11,7 +11,8 @@
     {
         "M":
         {
-            "item": "argon:lead_block"
+            "type": "forge:ore_dict",
+            "ore": "blockLead"
         }
     },
     

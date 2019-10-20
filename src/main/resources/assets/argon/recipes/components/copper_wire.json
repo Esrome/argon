@@ -10,7 +10,8 @@
     {
         "C":
         {
-            "item": "argon:copper_ingot"
+            "type": "forge:ore_dict",
+            "ore": "ingotCopper"
         }
     },
     

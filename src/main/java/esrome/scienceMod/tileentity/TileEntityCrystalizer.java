@@ -126,29 +126,29 @@ public class TileEntityCrystalizer extends TileEntity implements ITickable {
 		if(worldFacing!=facing) {
 			this.facing=worldFacing;
 		}
+		
 		ItemStack stack = handler.getStackInSlot(0);
 		ItemStack stack1 = handler.getStackInSlot(1);
 		ItemStack output = RecipesCrystalizer.getInstance().getCrystalizerRecipe(stack, stack1);
-		if(energy>=3 && handler!=null) {
-			if(handler!=null && output!=null)if(handler.getStackInSlot(2).getCount()<=64-output.getCount() && output!=null && (output.isItemEqual(handler.getStackInSlot(2))||handler.getStackInSlot(2).getCount()==0)){
+		int outputCount = RecipesCrystalizer.getInstance().getRecipeCount(stack, stack1);
+		if(output != null && energy>=3 && handler!=null) {
+			if((handler.getStackInSlot(2).isEmpty() || handler.getStackInSlot(2).isEmpty()) || (handler.getStackInSlot(2).getCount()<=output.getMaxStackSize()-output.getCount() && output.isItemEqual(handler.getStackInSlot(2)))){
 				currentBurnTime++;
 				energy-=3;
 				if(currentBurnTime==burnTime) {
 					currentBurnTime=0;
-					if(handler.getStackInSlot(2).isItemEqual(output)) {
-						handler.getStackInSlot(2).grow(output.getCount());
+					if(!handler.getStackInSlot(2).isEmpty()) {
+						handler.getStackInSlot(2).grow(outputCount);;
 					}else {
-						handler.setStackInSlot(2, output);
+						handler.setStackInSlot(2, output.copy());
 					}
 					handler.getStackInSlot(0).shrink(1);
 					handler.getStackInSlot(1).shrink(1);
 				}
-			}else if(currentBurnTime>0) {
-				currentBurnTime--;
-			}
-		}else if(currentBurnTime>0) {
-			currentBurnTime--;
-		}
+			}else if(currentBurnTime>0) currentBurnTime--;
+		}else if(currentBurnTime>0) currentBurnTime--;
+		if(output==null) currentBurnTime = 0;
+		
 		storage.setEnergy(energy);
 		for(int i = 0; i <= 2; i++) {
 			if(handler.getStackInSlot(i)!=itemstacks[i]) {

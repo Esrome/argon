@@ -10,7 +10,8 @@
     {
         "M":
         {
-            "item": "argon:magnetite_block"
+            "type": "forge:ore_dict",
+            "ore": "blockMagnetite"
         }
     },
     

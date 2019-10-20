@@ -11,7 +11,6 @@ public class OreDictionaryCompatibility {
 		OreDictionary.registerOre("generatorSteam", ModBlocks.STEAM_GENERATOR);
 		OreDictionary.registerOre("crystalizer", ModBlocks.CRYSTALIZER);
 		OreDictionary.registerOre("grinder", ModBlocks.BELT_GRINDER);
-		OreDictionary.registerOre("fabricator", ModBlocks.FABRICATOR);
 		OreDictionary.registerOre("towerTransmitter", ModBlocks.TRANSMITTER_TOWER_BASE);
 		OreDictionary.registerOre("towerTransmitter", ModBlocks.TRANSMITTER_TOWER_SUPPORT);
 		

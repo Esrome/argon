@@ -6,7 +6,6 @@ import esrome.scienceMod.init.ModFluids;
 import esrome.scienceMod.init.ModItems;
 import esrome.scienceMod.init.ModPotions;
 import esrome.scienceMod.util.IHasModel;
-import esrome.scienceMod.util.compatibility.OreDictionaryCompatibility;
 import esrome.scienceMod.world.gen.WorldGenMetalOres;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;

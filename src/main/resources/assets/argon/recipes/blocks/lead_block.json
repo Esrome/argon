@@ -12,7 +12,8 @@
     {
         "M":
         {
-            "item": "argon:lead_ingot"
+            "type": "forge:ore_dict",
+            "ore": "ingotLead"
         }
     },
     

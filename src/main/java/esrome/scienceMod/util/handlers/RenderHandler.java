@@ -2,16 +2,13 @@ package esrome.scienceMod.util.handlers;
 
 import esrome.scienceMod.init.ModBlocks;
 import esrome.scienceMod.tileentity.TileEntityCrystalizer;
-import esrome.scienceMod.tileentity.TileEntityFabricator;
 import esrome.scienceMod.tileentity.renderer.RenderCrystalizer;
-import esrome.scienceMod.tileentity.renderer.RenderFabricator;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.ItemMeshDefinition;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.renderer.block.statemap.StateMapperBase;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.client.MinecraftForgeClient;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
 
@@ -52,7 +49,6 @@ public class RenderHandler {
 	
 	public static void registerTileEntitySpecialRenderers() {
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityCrystalizer.class, new RenderCrystalizer());
-		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityFabricator.class, new RenderFabricator());
 	}
 	
 }

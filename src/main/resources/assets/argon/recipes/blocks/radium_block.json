@@ -12,7 +12,8 @@
     {
         "M":
         {
-            "item": "argon:radium_ingot"
+            "type": "forge:ore_dict",
+            "ore": "ingotRadium"
         }
     },
     

@@ -10,7 +10,8 @@
     {
         "M":
         {
-            "item": "argon:uranium_block"
+            "type": "forge:ore_dict",
+            "ore": "blockUranium"
         }
     },
     

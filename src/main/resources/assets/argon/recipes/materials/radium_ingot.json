@@ -10,7 +10,8 @@
     {
         "M":
         {
-            "item": "argon:radium_block"
+            "type": "forge:ore_dict",
+            "ore": "blockRadium"
         }
     },
     

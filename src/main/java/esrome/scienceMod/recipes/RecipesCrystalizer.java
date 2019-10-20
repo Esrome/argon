@@ -1,5 +1,7 @@
 package esrome.scienceMod.recipes;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
@@ -15,7 +17,10 @@ import net.minecraftforge.oredict.OreDictionary;
 public class RecipesCrystalizer {
 
 	private static final RecipesCrystalizer INSTANCE = new RecipesCrystalizer();
-	private final Table<ItemStack, ItemStack, ItemStack> smeltingList = HashBasedTable.<ItemStack, ItemStack, ItemStack>create();
+	private final List<ItemStack> inputList = new ArrayList<ItemStack>();
+	private final List<ItemStack> inputTwoList = new ArrayList<ItemStack>();
+	private final List<ItemStack> outputList = new ArrayList<ItemStack>();
+	private final List<Integer> outputCountList = new ArrayList<Integer>();
 	
 	public static RecipesCrystalizer getInstance(){
 		return INSTANCE;
@@ -23,43 +28,68 @@ public class RecipesCrystalizer {
 	
 	private RecipesCrystalizer() {
 		addCrystalizerRecipe(new ItemStack(ModItems.SILICON), new ItemStack(Items.QUARTZ), new ItemStack(ModItems.CRYSTALLINE_SILICON));
-		addCrystalizerRecipe(new ItemStack(Blocks.SAND), new ItemStack(Blocks.SAND), new ItemStack(Blocks.GLASS, 3));
+		addCrystalizerRecipe(new ItemStack(Blocks.SAND), new ItemStack(Blocks.SAND), new ItemStack(Blocks.GLASS), 3);
 		addCrystalizerRecipe(new ItemStack(ModItems.SILICA), new ItemStack(ModItems.SILICA), new ItemStack(Items.QUARTZ));
 	}
 
+	public void addCrystalizerRecipe(ItemStack input1, ItemStack input2, ItemStack result) {
+		addCrystalizerRecipe(input1, input2, result, 1);
+	}
 	
-	public void addCrystalizerRecipe(ItemStack input1, ItemStack input2, ItemStack result) 
-	{
-		if(getCrystalizerRecipe(input1, input2) != ItemStack.EMPTY) return;
-		this.smeltingList.put(input1, input2, result);
+	public void addCrystalizerRecipe(ItemStack input1, ItemStack input2, ItemStack result, int count) {
+		if(getCrystalizerRecipe(input1, input2) != null) return;
+		inputList.add(input1);
+		inputTwoList.add(input2);
+		outputList.add(result);
+		outputCountList.add(count);
 	}
 	
 	public ItemStack getCrystalizerRecipe(ItemStack input1, ItemStack input2) 
 	{
-		for(Entry<ItemStack, Map<ItemStack, ItemStack>> entry : this.smeltingList.columnMap().entrySet()) {
-			//oredictionary testing for Item 1
-			int[] ids = OreDictionary.getOreIDs((ItemStack)entry.getKey());
+		for(int i=0;i<inputList.size();i++) 
+		{
+			int[] ids = OreDictionary.getOreIDs(inputList.get(i));
 			for(int id: ids) {
 				String name = OreDictionary.getOreName(id);
-				for(ItemStack stack1 : OreDictionary.getOres(name)) {
-					if(this.compareItemStacks(input1, (ItemStack)entry.getKey())) {
-						for(Entry<ItemStack, ItemStack> ent : entry.getValue().entrySet()) {
-							//oredictionary testing for Item 2
-							int[] ids2 = OreDictionary.getOreIDs((ItemStack)ent.getValue());
-							for(int id2: ids2) {
-								String name2 = OreDictionary.getOreName(id2);
-								for(ItemStack stack : OreDictionary.getOres(name2)) {
-									if(this.compareItemStacks(input2, stack)) {
-										return (ItemStack)ent.getValue();
-									}
-								}
-							}
+				for(ItemStack stack: OreDictionary.getOres(name)) {
+					//Second Run
+					int[] idsTwo = OreDictionary.getOreIDs(inputTwoList.get(i));
+					for(int idTwo: idsTwo) {
+						String nameTwo = OreDictionary.getOreName(idTwo);
+						for(ItemStack stackTwo: OreDictionary.getOres(nameTwo)) {
+							if(input1.getItem()==stack.getItem() && input2.getItem()==stackTwo.getItem()) return outputList.get(i);
+							if(input2.getItem()==stack.getItem() && input1.getItem()==stackTwo.getItem()) return outputList.get(i);
 						}
 					}
+					//Second Run
 				}
 			}
 		}
 		return null;
+	}
+	
+	public int getRecipeCount(ItemStack input1, ItemStack input2) 
+	{
+		for(int i=0;i<inputList.size();i++) 
+		{
+			int[] ids = OreDictionary.getOreIDs(inputList.get(i));
+			for(int id: ids) {
+				String name = OreDictionary.getOreName(id);
+				for(ItemStack stack: OreDictionary.getOres(name)) {
+					//Second Run
+					int[] idsTwo = OreDictionary.getOreIDs(inputTwoList.get(i));
+					for(int idTwo: idsTwo) {
+						String nameTwo = OreDictionary.getOreName(idTwo);
+						for(ItemStack stackTwo: OreDictionary.getOres(nameTwo)) {
+							if(input1.getItem()==stack.getItem() && input2.getItem()==stackTwo.getItem()) return outputCountList.get(i);
+							if(input2.getItem()==stack.getItem() && input1.getItem()==stackTwo.getItem()) return outputCountList.get(i);
+						}
+					}
+					//Second Run
+				}
+			}
+		}
+		return 1;
 	}
 	
 	private boolean compareItemStacks(ItemStack stack1, ItemStack stack2)
@@ -67,9 +97,16 @@ public class RecipesCrystalizer {
 		return stack2.getItem() == stack1.getItem() && (stack2.getMetadata() == 32767 || stack2.getMetadata() == stack1.getMetadata());
 	}
 	
-	public Table<ItemStack, ItemStack, ItemStack> getDualSmeltingList() 
-	{
-		return this.smeltingList;
+	public List<ItemStack> firstInputs(){
+		return this.inputList;
+	}
+	
+	public List<ItemStack> secondInputs(){
+		return this.inputTwoList;
+	}
+	
+	public List<ItemStack> outputs(){
+		return this.outputList;
 	}
 	
 }
